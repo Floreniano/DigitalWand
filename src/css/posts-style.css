@@ -1,0 +1,66 @@
+@import 'default.css';
+@import 'reset.css';
+.posts__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 60px;
+}
+
+.posts__list-item {
+    color: black;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 47%;
+    background-color: #ffff;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.posts__list-item-title {
+    font-weight: 500;
+    font-size: 24px;
+    word-break: break-all;
+}
+
+.posts__list-item-title::first-letter {
+    text-transform: uppercase;
+}
+
+.posts__list-item-text {
+    padding-top: 30px;
+    word-break: break-all;
+}
+
+.posts__list-item-text::first-letter {
+    text-transform: uppercase;
+}
+
+.posts__list-item-link {
+    color: #ffff;
+    cursor: pointer;
+    background-color: red;
+    transition: all 0.6s ease-in-out;
+    margin-top: 30px;
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-weight: 500;
+    border: 0px;
+    font-size: 15px;
+    outline: none;
+}
+
+.posts__list-item-link:hover {
+    transition: all 0.6s ease-in-out;
+    background-color: #690101;
+}
+
+@media (max-width: 650px) {
+    .posts__list-item {
+        width: 100%;
+    }
+}

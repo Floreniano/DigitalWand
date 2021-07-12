@@ -1,0 +1,79 @@
+@import 'default.css';
+@import 'reset.css';
+.more__title {
+    padding-top: 50px;
+    font-weight: 500;
+    font-size: 35px;
+}
+
+.more__title::first-letter {
+    text-transform: uppercase;
+}
+
+.more__text {
+    padding-top: 50px;
+    line-height: 30px;
+    font-size: 18px;
+}
+
+.more__text::first-letter {
+    text-transform: uppercase;
+}
+
+.comments {
+    margin-top: 150px;
+    position: relative;
+}
+
+.user {
+    padding-top: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.user:first-child {
+    padding-top: 0;
+}
+
+.user__img {
+    max-width: 50px;
+    margin-right: 15px;
+}
+
+.comments__text {
+    padding-top: 20px;
+}
+.user__email{
+    word-break: break-all;
+}
+.comments__text-title {
+    font-size: 24px;
+}
+
+.comments__text-title::first-letter {
+    text-transform: uppercase;
+}
+
+.comments__text-text {
+    padding-top: 10px;
+    font-size: 14px;
+    line-height: 24px;
+    max-width: 50%;
+}
+
+.comments__text-text::first-letter {
+    text-transform: uppercase;
+}
+
+.comments::after {
+    position: absolute;
+    content: "Комментарии";
+    left: 0;
+    top: -50px;
+    font-size: 24px;
+}
+@media (max-width: 500px) {
+    .comments__text-text{
+        max-width: 90%;
+    }
+}
