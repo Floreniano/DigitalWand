@@ -1,6 +1,7 @@
-# Getting Started with Create React App
+# Данные для входа
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  - Логин: arkovalexandr1@gmail.com
+  - Пароль: arkov123
 
 ## Available Scripts
 
