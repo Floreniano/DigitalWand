@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import $ from "jquery";
 //components
 import Comment from "../components/Comment";
 import PostToComment from "../components/PostToComment";

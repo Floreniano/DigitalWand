@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import $ from "jquery";
 //components
 import Post from "../components/Post";
 import Preloader from "../components/Preloader";
