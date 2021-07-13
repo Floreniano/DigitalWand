@@ -40,9 +40,6 @@
     margin-right: 15px;
 }
 
-.comments__text {
-    padding-top: 20px;
-}
 .user__email{
     word-break: break-all;
 }
@@ -56,7 +53,7 @@
 
 .comments__text-text {
     padding-top: 10px;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 24px;
     max-width: 50%;
 }
@@ -64,7 +61,12 @@
 .comments__text-text::first-letter {
     text-transform: uppercase;
 }
-
+.comments__inner-item{
+    padding-top: 50px;
+}
+.comments__inner-item:first-child{
+    padding-top: 0;
+}
 .comments::after {
     position: absolute;
     content: "Комментарии";

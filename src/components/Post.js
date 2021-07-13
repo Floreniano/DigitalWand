@@ -1,7 +1,7 @@
 import React from "react";
-export default function Post({ title, body }) {
+export default function Post({ title, body, id }) {
   function savePostId(postID) {
-    localStorage.setItem("postId", postID - 1);
+    localStorage.setItem("postId", postID);
   }
   return (
     <div className="posts__list-item">
@@ -9,8 +9,8 @@ export default function Post({ title, body }) {
       <p className="posts__list-item-text">{body}</p>
       <a
         href="comments"
-        onClick={() => savePostId()}
-        onMouseDown={() => savePostId()}
+        onClick={() => savePostId(id)}
+        onMouseDown={() => savePostId(id)}
         className="posts__list-item-link"
       >
         Подробнее

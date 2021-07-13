@@ -1,10 +1,10 @@
-import React, { Component} from "react";
+import React, { Component } from "react";
 import $ from "jquery";
 //components
 import Post from "../components/Post";
+import Preloader from "../components/Preloader";
 // css
 import "../css/posts-style.css";
-import Preloader from "../components/Preloader";
 export class PostsPage extends Component {
   constructor(props) {
     super(props);
@@ -42,16 +42,12 @@ export class PostsPage extends Component {
     if (error) {
       return <p>Ошибка {error.message}</p>;
     } else if (isLoaded) {
-      return (
-        <Preloader />
-      );
+      return <Preloader />;
     } else {
       function exit() {
-        console.log("123");
         localStorage.removeItem("userID");
-        localStorage.removeItem("postID");
-        window.close();
-        window.open("/");
+        localStorage.removeItem("postId");
+        window.location = "/";
       }
       return (
         <div className="content">
@@ -60,7 +56,7 @@ export class PostsPage extends Component {
           </button>
           <div className="posts__list">
             {posts.map((post) => (
-              <Post key={post.id} title={post.title} body={post.body} />
+              <Post key={post.id} title={post.title} body={post.body} id={post.id} />
             ))}
           </div>
         </div>
@@ -68,13 +64,3 @@ export class PostsPage extends Component {
     }
   }
 }
-$(document).ready(function () {
-  function savePostId(id) {
-    localStorage.setItem("postId", id - 1);
-  }
-
-  $(".btn__back").click(function () {
-    window.history.back();
-  });
-});
-$(".btn__exit").click(function () {});
