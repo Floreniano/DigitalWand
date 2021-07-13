@@ -15,12 +15,22 @@ export class CommentsPage extends Component {
       posts: [],
       comments: [],
     };
+    this.exit = this.exit.bind(this);
+    this.backToPosts = this.backToPosts.bind(this);
   }
-
+  exit() {
+    localStorage.removeItem("userID");
+    localStorage.removeItem("postId");
+    window.location = "/";
+  }
+  backToPosts() {
+    window.history.back();
+  }
   componentDidMount() {
     if (localStorage.getItem("userID") == 1) {
       const urlPosts = "https://jsonplaceholder.typicode.com/posts";
-      const urlComments = "https://jsonplaceholder.typicode.com/comments?postId=1";
+      const urlComments =
+        "https://jsonplaceholder.typicode.com/comments?postId=1";
       fetch(urlPosts)
         .then((response) => response.json())
         .then(
@@ -63,21 +73,13 @@ export class CommentsPage extends Component {
     } else if (isLoaded) {
       return <Preloader />;
     } else {
-      function exit() {
-        localStorage.removeItem("userID");
-        localStorage.removeItem("postId");
-        window.location = "/";
-      }
-      function backToPosts() {
-        window.history.back();
-      }
       return (
         <div className="content">
           <nav className="nav">
-            <a className="btn__back" onClick={backToPosts}>
+            <a className="btn__back" onClick={this.backToPosts}>
               Назад
             </a>
-            <a className="btn__exit" onClick={exit}>
+            <a className="btn__exit" onClick={this.exit}>
               Выйти
             </a>
           </nav>

@@ -13,6 +13,7 @@ export class PostsPage extends Component {
       isLoaded: true,
       posts: [],
     };
+    this.exit = this.exit.bind(this);
   }
 
   componentDidMount() {
@@ -36,6 +37,11 @@ export class PostsPage extends Component {
         );
     }
   }
+  exit() {
+    localStorage.removeItem("userID");
+    localStorage.removeItem("postId");
+    window.location = "/";
+  }
 
   render() {
     const { error, isLoaded, posts } = this.state;
@@ -44,14 +50,10 @@ export class PostsPage extends Component {
     } else if (isLoaded) {
       return <Preloader />;
     } else {
-      function exit() {
-        localStorage.removeItem("userID");
-        localStorage.removeItem("postId");
-        window.location = "/";
-      }
+      
       return (
         <div className="content">
-          <button className="btn__exit" onClick={exit}>
+          <button className="btn__exit" onClick={this.exit}>
             Выйти
           </button>
           <div className="posts__list">
