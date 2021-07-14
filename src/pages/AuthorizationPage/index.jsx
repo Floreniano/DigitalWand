@@ -87,7 +87,7 @@ export class AuthorizationPage extends Component {
             }
             id="btnConfirm"
           >
-            Login
+            Войти
           </button>
         </div>
       </div>
