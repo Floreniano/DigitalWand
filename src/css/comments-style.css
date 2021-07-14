@@ -1,5 +1,3 @@
-@import 'default.css';
-@import 'reset.css';
 .more__title {
     padding-top: 50px;
     font-weight: 500;
@@ -73,6 +71,9 @@
     left: 0;
     top: -50px;
     font-size: 24px;
+}
+.btn__back{
+    display: flex;
 }
 @media (max-width: 500px) {
     .comments__text-text{

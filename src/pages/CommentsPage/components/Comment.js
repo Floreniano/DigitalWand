@@ -7,7 +7,6 @@ export default function Post({
   id, 
   currentPostId }) {
   const currentPostID = parseInt(currentPostId, 16);
-  console.log(typeof currentPostID);
   if (id !== currentPostID) {
     return null;
   }

@@ -3,10 +3,10 @@ import React, { Component } from "react";
 import Comment from "pages/CommentsPage/components/Comment";
 import PostToComment from "pages/CommentsPage/components/PostToComment";
 import Preloader from "components/Preloader";
-import { Header } from "components/header";
+import { Header } from "components/Header";
 
 import "css/comments-style.css";
-
+import "css/default.css";
 export class CommentsPage extends Component {
   constructor(props) {
     super(props);

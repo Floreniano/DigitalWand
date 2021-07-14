@@ -1,5 +1,3 @@
-@import 'default.css';
-@import 'reset.css';
 .posts__list {
     display: flex;
     flex-wrap: wrap;
