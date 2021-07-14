@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { useRoutes } from "./routes";
 
 function App() {
-  const routes = useRoutes(localStorage.getItem("userID"));
+  const routes = useRoutes(parseInt(localStorage.getItem("userID"),16));
   return (
       <Router>        
         <div className="container">{routes}</div>

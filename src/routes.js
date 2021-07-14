@@ -1,16 +1,11 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect,
-  Switch,
-} from "react-router-dom";
-import { AuthorizationPage } from "./pages/AuthorizationPage";
-import { CommentsPage } from "./pages/CommentsPage";
-import { PostsPage } from "./pages/PostsPage";
+import { Route, Redirect, Switch } from "react-router-dom";
+import { AuthorizationPage } from "pages/AuthorizationPage/index.jsx";
+import { CommentsPage } from "pages/CommentsPage/index.jsx";
+import { PostsPage } from "pages/PostPage/index.jsx";
 
-export const useRoutes = userId => {
-  if (userId == 1) {
+export const useRoutes = (userId) => {
+  if (userId === 1) {
     return (
       <Switch>
         <Route path="/posts" exact>
