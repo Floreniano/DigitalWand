@@ -22,8 +22,7 @@ export class AuthorizationPage extends Component {
       passwordForAuthorization === $.trim(password)
     ) {
       localStorage.setItem("userID", 1);
-      window.close();
-      window.open("/posts");
+      window.location ="/posts";
     }
 
     const errorOutputPassword = (errorPasswordString) =>

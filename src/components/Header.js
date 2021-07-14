@@ -5,8 +5,7 @@ export class Header extends Component {
     this.exit = this.exit.bind(this);
   }
   exit() {
-    localStorage.removeItem("userID");
-    localStorage.removeItem("postId");
+    localStorage.clear();
     window.location = "/";
   }
   render() {
