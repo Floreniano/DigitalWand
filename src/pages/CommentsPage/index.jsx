@@ -5,8 +5,6 @@ import PostToComment from "pages/CommentsPage/components/PostToComment";
 import Preloader from "components/Preloader";
 import { Header } from "components/Header";
 
-import "css/comments-style.css";
-import "css/default.css";
 export class CommentsPage extends Component {
   constructor(props) {
     super(props);

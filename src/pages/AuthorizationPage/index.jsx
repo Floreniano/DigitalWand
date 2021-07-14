@@ -3,7 +3,7 @@ import $ from "jquery";
 //assets
 import user from "assets/img/user.png";
 //css
-import "css/authorization-style.css";
+
 
 export class AuthorizationPage extends Component {
   constructor(props) {

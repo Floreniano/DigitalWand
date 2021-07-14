@@ -4,8 +4,6 @@ import Post from "pages/PostPage/components/Post";
 import Preloader from "components/Preloader";
 import { Header } from "components/Header";
 
-import "css/posts-style.css";
-
 export class PostsPage extends Component {
   constructor(props) {
     super(props);
