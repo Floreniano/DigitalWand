@@ -24,10 +24,6 @@ export class AuthorizationPage extends Component {
   handlePasswordChange = (e) => {
     this.setState({ password: e.target.value });
   };
-  handleSubmit = () => {
-    const { email, password } = this.state;
-    alert(`Welcome ${email} password: ${password}`);
-  };
 
   authorization(email, password) {
     const emailForAuthorization = "arkovalexandr1@gmail.com";
