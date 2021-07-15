@@ -9,7 +9,7 @@ import "css/authorization-style.css";
 import "css/posts-style.css";
 import "css/comments-style.css";
 
-function App() {
+function App() {  
   const routes = useRoutes(parseInt(localStorage.getItem("userID"), 16));
   return (
     <Router>

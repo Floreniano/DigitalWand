@@ -4,16 +4,29 @@ import $ from "jquery";
 import user from "assets/img/user.png";
 //css
 
-
 export class AuthorizationPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       errorPassword: "",
       errorEmail: "",
+      email: "",
+      password: "",
     };
     this.authorization = this.authorization.bind(this);
   }
+
+  handleEmailChange = (e) => {
+    this.setState({ email: e.target.value });
+  };
+  handlePasswordChange = (e) => {
+    this.setState({ password: e.target.value });
+  };
+  handleSubmit = () => {
+    const { email, password } = this.state;
+    alert(`Welcome ${email} password: ${password}`);
+  };
+
   authorization(email, password) {
     const emailForAuthorization = "arkovalexandr1@gmail.com";
     const passwordForAuthorization = "arkov123";
@@ -22,7 +35,7 @@ export class AuthorizationPage extends Component {
       passwordForAuthorization === $.trim(password)
     ) {
       localStorage.setItem("userID", 1);
-      window.location ="/posts";
+      window.location = "/posts";
     }
 
     const errorOutputPassword = (errorPasswordString) =>
@@ -45,14 +58,20 @@ export class AuthorizationPage extends Component {
     const re =
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!re.test(String(email).toLowerCase()) === true) {
-      errorOutputEmail("Введите email");
+      errorOutputEmail("Введите корректный email");
     } else {
       errorOutputEmail("");
     }
   }
 
   render() {
-    const { errorPassword, errorEmail } = this.state;
+    const { 
+      errorPassword, 
+      errorEmail, 
+      email, 
+      password 
+    } = this.state;
+    const enabled = email.length > 0 && password.length > 0;
     return (
       <div>
         <div className="form">
@@ -65,7 +84,8 @@ export class AuthorizationPage extends Component {
             className="txt__email"
             id="email"
             placeholder="Введите email"
-            required
+            value={this.state.email}
+            onChange={this.handleEmailChange}
           ></input>
           <p className="valid" id="validPassword">
             {errorPassword}
@@ -75,7 +95,8 @@ export class AuthorizationPage extends Component {
             className="txt__password"
             placeholder="Введите пароль"
             id="password"
-            required
+            value={this.state.password}
+            onChange={this.handlePasswordChange}
           ></input>
           <button
             className="btn__confirm"
@@ -86,6 +107,7 @@ export class AuthorizationPage extends Component {
               )
             }
             id="btnConfirm"
+            disabled={!enabled}
           >
             Войти
           </button>
