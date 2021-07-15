@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import $ from "jquery";
+import cn from "classnames";
 //assets
 import user from "assets/img/user.png";
+import { styles } from "ansi-colors";
 //css
 
 export class AuthorizationPage extends Component {

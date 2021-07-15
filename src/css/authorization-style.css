@@ -31,13 +31,18 @@
     font-size: 25px;
     outline: none;
 }
-
-.valid {
-    margin-top: 60px;
-    color: red;
+.btn__confirm:disabled{
+    background-color: #5c5b58;
+    transition: all 0.6s ease-in-out;
 }
-
 .btn__confirm:hover {
     transition: all 0.6s ease-in-out;
     background-color: #690101;
+}
+.btn__confirm:disabled:hover{
+    background-color: #5c5b58;
+}
+.valid {
+    margin-top: 60px;
+    color: red;
 }
