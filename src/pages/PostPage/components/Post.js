@@ -1,4 +1,5 @@
 import React from "react";
+import { createStore } from "redux";
 export default function Post({ 
   title, 
   body, 
@@ -12,12 +13,13 @@ export default function Post({
       <p className="posts__list-item-text">{body}</p>
       <a
         href="comments"
-        onClick={() => savePostId()}
-        onMouseDown={() => savePostId()}
+        onClick={savePostId}
+        onMouseDown={savePostId}
         className="posts__list-item-link"
       >
         Подробнее
       </a>
     </div>
   );
+  
 }
