@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import $ from "jquery";
 //assets
 import user from "assets/img/user.png";
-//css
 
 export class AuthorizationPage extends Component {
   constructor(props) {
@@ -48,7 +47,7 @@ export class AuthorizationPage extends Component {
     } else if (password !== passwordForAuthorization) {
       errorOutputPassword("Пароль введен не верно");
     } else {
-      errorOutputPassword("Введите пароль");
+      errorOutputPassword("");
     }
 
     const re =
