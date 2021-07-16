@@ -27,7 +27,7 @@ export class AuthorizationPage extends Component {
     const passwordForAuthorization = "arkov123";
     if (
       emailForAuthorization === email &&
-      passwordForAuthorization === $.trim(password)
+      passwordForAuthorization === password.trim()
     ) {
       localStorage.setItem("userID", 1);
       window.location = "/posts";
@@ -95,12 +95,7 @@ export class AuthorizationPage extends Component {
           ></input>
           <button
             className="btn__confirm"
-            onClick={() =>
-              this.authorization(
-                document.getElementById("email").value,
-                document.getElementById("password").value
-              )
-            }
+            onClick={() => this.authorization(email, password)}
             id="btnConfirm"
             disabled={!enabled}
           >

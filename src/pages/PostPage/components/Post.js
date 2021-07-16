@@ -1,9 +1,12 @@
 import React from "react";
 import { createStore } from "redux";
+import { rootReducer } from "redux/rootReducer";
 export default function Post({ 
   title, 
   body, 
   id }) {
+  const store = createStore(rootReducer, 0)
+  window.store = store;
   function savePostId() {
     localStorage.setItem("postId", id);
   }
