@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import Comment from "pages/CommentsPage/components/Comment";
-import PostToComment from "pages/CommentsPage/components/PostToComment";
-import Preloader from "components/Preloader";
-import { Header } from "components/Header";
+import Comment from 'pages/CommentsPage/components/Comment';
+import PostToComment from 'pages/CommentsPage/components/PostToComment';
+import Preloader from 'components/Preloader';
+import { Header } from 'components/Header';
 
 export class CommentsPage extends Component {
   constructor(props) {
@@ -15,10 +15,10 @@ export class CommentsPage extends Component {
       comments: [],
     };
   }
+
   componentDidMount() {
-    const urlPosts = "https://jsonplaceholder.typicode.com/posts";
-    const urlComments =
-      "https://jsonplaceholder.typicode.com/comments?postId=1";
+    const urlPosts = 'https://jsonplaceholder.typicode.com/posts';
+    const urlComments = 'https://jsonplaceholder.typicode.com/comments?postId=1';
 
     fetch(urlPosts)
       .then((response) => response.json())
@@ -34,7 +34,7 @@ export class CommentsPage extends Component {
             isLoaded: false,
             error,
           });
-        }
+        },
       );
     fetch(urlComments)
       .then((response) => response.json())
@@ -50,47 +50,52 @@ export class CommentsPage extends Component {
             isLoaded: false,
             error,
           });
-        }
+        },
       );
   }
 
   render() {
-    const { error, isLoaded, posts, comments } = this.state;
+    const {
+      error,
+      isLoaded,
+      posts,
+      comments,
+    } = this.state;
     if (error) {
       return <p>Ошибка {error.message}</p>;
-    } else if (isLoaded) {
+    }
+    if (isLoaded) {
       return <Preloader />;
-    } else {
-      return (
-        <div className="content">
-          <Header />
-          <div className="post_item">
-            {posts.map((post) => (
-              <PostToComment
-                key={post.id}
-                title={post.title}
-                body={post.body}
-                id={post.id}
-                currentPostId={localStorage.getItem("postId")}
+    }
+    return (
+      <div className='content'>
+        <Header />
+        <div className='post_item'>
+          {posts.map((post) => (
+            <PostToComment
+              key={post.id}
+              title={post.title}
+              body={post.body}
+              id={post.id}
+              currentPostId={localStorage.getItem('postId')}
+            />
+          ))}
+        </div>
+        <div className='comments'>
+          <div className='comments__inner'>
+            {comments.map((comment) => (
+              <Comment
+                key={comment.id}
+                email={comment.email}
+                name={comment.name}
+                body={comment.body}
+                id={comment.postId}
+                currentPostId={localStorage.getItem('postId')}
               />
             ))}
           </div>
-          <div className="comments">
-            <div className="comments__inner">
-              {comments.map((comment) => (
-                <Comment
-                  key={comment.id}
-                  email={comment.email}
-                  name={comment.name}
-                  body={comment.body}
-                  id={comment.postId}
-                  currentPostId={localStorage.getItem("postId")}
-                />
-              ))}
-            </div>
-          </div>
         </div>
-      );
-    }
+      </div>
+    );
   }
 }

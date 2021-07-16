@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import Post from "pages/PostPage/components/Post";
-import Preloader from "components/Preloader";
-import { Header } from "components/Header";
+import Post from 'pages/PostPage/components/Post';
+import Preloader from 'components/Preloader';
+import { Header } from 'components/Header';
 
 export class PostsPage extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ export class PostsPage extends Component {
   }
 
   componentDidMount() {
-    const url = "https://jsonplaceholder.typicode.com/posts";
+    const url = 'https://jsonplaceholder.typicode.com/posts';
     fetch(url)
       .then((response) => response.json())
       .then(
@@ -30,7 +30,7 @@ export class PostsPage extends Component {
             isLoaded: false,
             error,
           });
-        }
+        },
       );
   }
 
@@ -38,24 +38,24 @@ export class PostsPage extends Component {
     const { error, isLoaded, posts } = this.state;
     if (error) {
       return <p>Ошибка {error.message}</p>;
-    } else if (isLoaded) {
-      return <Preloader />;
-    } else {
-      return (
-        <div className="content">
-          <Header />
-          <div className="posts__list">
-            {posts.map((post) => (
-              <Post
-                key={post.id}
-                title={post.title}
-                body={post.body}
-                id={post.id}
-              />
-            ))}
-          </div>
-        </div>
-      );
     }
+    if (isLoaded) {
+      return <Preloader />;
+    }
+    return (
+      <div className='content'>
+        <Header />
+        <div className='posts__list'>
+          {posts.map((post) => (
+            <Post
+              key={post.id}
+              title={post.title}
+              body={post.body}
+              id={post.id}
+            />
+          ))}
+        </div>
+      </div>
+    );
   }
 }
