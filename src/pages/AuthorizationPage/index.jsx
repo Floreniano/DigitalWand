@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import $ from "jquery";
 //assets
 import user from "assets/img/user.png";
 
