@@ -3,13 +3,15 @@ const initialState = {
 };
 
 const posts = (state = initialState, action) => {
-  if (action.type === 'SAVE_POST_ID') {
-    return {
-      ...state,
-      id: action.payload,
-    };
+  switch (action.type) {
+    case 'SAVE_POST_ID':
+      return {
+        ...state,
+        id: action.payload,
+      };
+    default:
+      return state;
   }
-  return state;
 };
 
 export default posts;
