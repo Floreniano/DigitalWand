@@ -1,15 +1,15 @@
 import React from 'react';
 import logo from 'assets/img/user.png';
+import { connect } from 'react-redux';
 
-export default function Post({
+function Comment({
   email,
   name,
   body,
   id,
-  currentPostId,
+  postId,
 }) {
-  const currentPostID = parseInt(currentPostId, 16);
-  if (id !== currentPostID) {
+  if (id !== postId) {
     return null;
   }
   return (
@@ -25,3 +25,6 @@ export default function Post({
     </div>
   );
 }
+const mapStateToProps = (state) => ({ postId: state.posts.id });
+
+export default connect(mapStateToProps, null)(Comment);

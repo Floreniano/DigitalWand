@@ -9,7 +9,7 @@ export class PostsPage extends Component {
     super(props);
     this.state = {
       error: null,
-      isLoaded: true,
+      isLoaded: false,
       posts: [],
     };
   }
@@ -21,13 +21,13 @@ export class PostsPage extends Component {
       .then(
         (result) => {
           this.setState({
-            isLoaded: false,
+            isLoaded: true,
             posts: result,
           });
         },
         (error) => {
           this.setState({
-            isLoaded: false,
+            isLoaded: true,
             error,
           });
         },
@@ -39,7 +39,7 @@ export class PostsPage extends Component {
     if (error) {
       return <p>Ошибка {error.message}</p>;
     }
-    if (isLoaded) {
+    if (!isLoaded) {
       return <Preloader />;
     }
     return (
