@@ -3,14 +3,15 @@ import React, { Component } from 'react';
 import Post from 'pages/PostPage/components/Post';
 import Preloader from 'components/Preloader';
 import { Header } from 'components/Header';
+import { setPosts } from 'redux/actions/posts';
+import { connect } from 'react-redux';
 
-export class PostsPage extends Component {
+class PostsPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       error: null,
       isLoaded: false,
-      posts: [],
     };
   }
 
@@ -22,8 +23,8 @@ export class PostsPage extends Component {
         (result) => {
           this.setState({
             isLoaded: true,
-            posts: result,
           });
+          this.props.setPosts(result);
         },
         (error) => {
           this.setState({
@@ -35,7 +36,7 @@ export class PostsPage extends Component {
   }
 
   render() {
-    const { error, isLoaded, posts } = this.state;
+    const { error, isLoaded } = this.state;
     if (error) {
       return <p>Ошибка {error.message}</p>;
     }
@@ -46,16 +47,21 @@ export class PostsPage extends Component {
       <div className='content'>
         <Header />
         <div className='posts__list'>
-          {posts.map((post) => (
-            <Post
-              key={post.id}
-              title={post.title}
-              body={post.body}
-              id={post.id}
-            />
+          {this.props.items.map((post) => (
+            <Post key={post.id} title={post.title} body={post.body} id={post.id} />
           ))}
         </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  items: state.posts.posts,
+});
+
+const mapDispatchToProps = {
+  setPosts,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostsPage);

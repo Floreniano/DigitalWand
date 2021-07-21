@@ -7,7 +7,6 @@ import store from 'redux/store';
 export default function Post({ title, body, id }) {
   const history = useHistory();
   function saveCurrentPostId() {
-    // savePostId(id);
     store.dispatch(savePostId(id));
     history.push('/comments');
   }
@@ -25,9 +24,3 @@ export default function Post({ title, body, id }) {
     </div>
   );
 }
-
-// const mapDispatchToProps = {
-//   savePostId,
-// };
-
-// export default connect(null, mapDispatchToProps)(Post);

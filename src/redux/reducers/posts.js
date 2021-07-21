@@ -1,5 +1,6 @@
 const initialState = {
   id: 0,
+  posts: [],
 };
 
 const posts = (state = initialState, action) => {
@@ -8,6 +9,11 @@ const posts = (state = initialState, action) => {
       return {
         ...state,
         id: action.payload,
+      };
+    case 'SET_POST':
+      return {
+        ...state,
+        posts: action.payload,
       };
     default:
       return state;
