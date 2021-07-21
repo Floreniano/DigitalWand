@@ -4,50 +4,33 @@ import Comment from 'pages/CommentsPage/components/Comment';
 import PostToComment from 'pages/CommentsPage/components/PostToComment';
 import Preloader from 'components/Preloader';
 import { Header } from 'components/Header';
+import { setComments } from 'redux/actions/comments';
+import { connect } from 'react-redux';
 
-export class CommentsPage extends Component {
+class CommentsPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       error: null,
-      isLoaded: true,
-      posts: [],
-      comments: [],
+      isLoaded: false,
     };
   }
 
   componentDidMount() {
-    const urlPosts = 'https://jsonplaceholder.typicode.com/posts';
     const urlComments = 'https://jsonplaceholder.typicode.com/comments?postId=1';
 
-    fetch(urlPosts)
-      .then((response) => response.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: false,
-            posts: result,
-          });
-        },
-        (error) => {
-          this.setState({
-            isLoaded: false,
-            error,
-          });
-        },
-      );
     fetch(urlComments)
       .then((response) => response.json())
       .then(
         (result) => {
           this.setState({
-            isLoaded: false,
-            comments: result,
+            isLoaded: true,
           });
+          this.props.setComments(result);
         },
         (error) => {
           this.setState({
-            isLoaded: false,
+            isLoaded: true,
             error,
           });
         },
@@ -55,16 +38,14 @@ export class CommentsPage extends Component {
   }
 
   render() {
-    const {
-      error,
-      isLoaded,
-      posts,
-      comments,
-    } = this.state;
+    const { error, isLoaded } = this.state;
+    const posts = this.props.allPosts;
+    const comments = this.props.allComments;
+    console.log(this.props);
     if (error) {
       return <p>Ошибка {error.message}</p>;
     }
-    if (isLoaded) {
+    if (!isLoaded) {
       return <Preloader />;
     }
     return (
@@ -73,12 +54,10 @@ export class CommentsPage extends Component {
         <div className='post_item'>
           {posts.map((post) => (
             <PostToComment
-              key={post.id}
-              title={post.title}
-              body={post.body}
-              id={post.id}
-              currentPostId={localStorage.getItem('postId')}
-            />
+            key={post.id}
+            title={post.title}
+            body={post.body}
+            id={post.id} />
           ))}
         </div>
         <div className='comments'>
@@ -90,7 +69,6 @@ export class CommentsPage extends Component {
                 name={comment.name}
                 body={comment.body}
                 id={comment.postId}
-                currentPostId={localStorage.getItem('postId')}
               />
             ))}
           </div>
@@ -99,3 +77,14 @@ export class CommentsPage extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  allPosts: state.posts.posts,
+  allComments: state.comments.comments,
+});
+
+const mapDispatchToProps = {
+  setComments,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CommentsPage);
