@@ -41,7 +41,6 @@ class CommentsPage extends Component {
     const { error, isLoaded } = this.state;
     const posts = this.props.allPosts;
     const comments = this.props.allComments;
-    console.log(this.props);
     if (error) {
       return <p>Ошибка {error.message}</p>;
     }
