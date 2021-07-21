@@ -37,6 +37,7 @@ class PostsPage extends Component {
 
   render() {
     const { error, isLoaded } = this.state;
+    const posts = this.props.items;
     if (error) {
       return <p>Ошибка {error.message}</p>;
     }
@@ -47,7 +48,7 @@ class PostsPage extends Component {
       <div className='content'>
         <Header />
         <div className='posts__list'>
-          {this.props.items.map((post) => (
+          {posts.map((post) => (
             <Post key={post.id} title={post.title} body={post.body} id={post.id} />
           ))}
         </div>
