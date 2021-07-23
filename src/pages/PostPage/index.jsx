@@ -21,7 +21,7 @@ class PostsPage extends Component {
     return (
       <div className="content">
         <Header></Header>
-        {<Error text={errorText} />}
+        {errorText && <Error text={errorText} />}
         <div className="posts__list">
           {posts.map((post) => (
             <Post key={post.id} title={post.title} body={post.body} id={post.id} />

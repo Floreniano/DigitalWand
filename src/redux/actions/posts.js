@@ -11,7 +11,7 @@ export function fetchPosts() {
   return async (dispatch) => {
     try {
       dispatch(showLoader());
-      const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+      const response = await fetch('ttps://jsonplaceholder.typicode.com/posts');
       const json = await response.json();
       dispatch({
         type: FETCH_POSTS,
@@ -19,7 +19,7 @@ export function fetchPosts() {
       });
       dispatch(hideLoader());
     } catch (e) {
-      dispatch(showError('Ошибка 404'));
+      dispatch(showError('Ошибка соединения'));
       dispatch(hideLoader());
     }
   };
