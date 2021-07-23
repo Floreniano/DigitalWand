@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
 
 export class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.exit = this.exit.bind(this);
-  }
-
   exit = () => {
     localStorage.clear();
     window.location = '/';
-  }
+  };
 
   render() {
     return (

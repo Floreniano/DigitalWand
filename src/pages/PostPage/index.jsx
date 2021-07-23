@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Post from 'pages/PostPage/components/Post';
 import Preloader from 'components/Preloader';
 import { Header } from 'components/Header';
-import { setPosts } from 'redux/actions/posts';
+import { setPosts, fetchPosts } from 'redux/actions/posts';
 import { connect } from 'react-redux';
 
 class PostsPage extends Component {
@@ -17,6 +17,7 @@ class PostsPage extends Component {
 
   componentDidMount() {
     const url = 'https://jsonplaceholder.typicode.com/posts';
+    this.props.fetchPosts();
     fetch(url)
       .then((response) => response.json())
       .then(
@@ -36,12 +37,12 @@ class PostsPage extends Component {
   }
 
   render() {
-    const { error, isLoaded } = this.state;
-    const posts = this.props.items;
+    const { error } = this.state;
+    const { items: posts, loading: loader } = this.props;
     if (error) {
       return <p>Ошибка {error.message}</p>;
     }
-    if (!isLoaded) {
+    if (loader) {
       return <Preloader />;
     }
     return (
@@ -57,12 +58,22 @@ class PostsPage extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  items: state.posts.posts,
-});
+// const mapStateToProps = (state) => ({
+//   items: state.posts.posts,
+// });
+
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    items: state.posts.posts,
+    fetchPosts: state.posts.fetchedPosts,
+    loading: state.app.loading,
+  };
+};
 
 const mapDispatchToProps = {
   setPosts,
+  fetchPosts,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostsPage);
