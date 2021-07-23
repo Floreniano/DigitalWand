@@ -38,14 +38,6 @@ const mapStateToProps = (state) => ({
   error: state.app.error,
 });
 
-// const mapStateToProps = (state) => {
-//   console.log(state.app.error);
-//   return {
-//     fetchedPosts: state.posts.fetchedPosts,
-//     loading: state.app.loading,
-//   };
-// };
-
 const mapDispatchToProps = {
   fetchPosts,
   showError,
