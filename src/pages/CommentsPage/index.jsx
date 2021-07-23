@@ -52,22 +52,12 @@ class CommentsPage extends Component {
   }
 }
 
-// const mapStateToProps = (state) => ({
-//   fetchedPosts: state.posts.fetchedPosts,
-//   loading: state.app.loading,
-//   error: state.app.error,
-//   allComments: state.comments.comments,
-// });
-
-const mapStateToProps = (state) => {
-  console.log(state.comments);
-  return {
-    fetchedPosts: state.posts.fetchedPosts,
-    fetchedComments: state.comments.fetchedComments,
-    loading: state.app.loading,
-    error: state.app.error,
-  };
-};
+const mapStateToProps = (state) => ({
+  fetchedPosts: state.posts.fetchedPosts,
+  fetchedComments: state.comments.fetchedComments,
+  loading: state.app.loading,
+  error: state.app.error,
+});
 
 const mapDispatchToProps = {
   fetchComments,
