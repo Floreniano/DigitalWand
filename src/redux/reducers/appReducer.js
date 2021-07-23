@@ -1,6 +1,4 @@
-import {
-  SHOW_LOADER, HIDE_LOADER, SHOW_ERROR, HIDE_ERROR,
-} from 'redux/types';
+import { SHOW_LOADER, HIDE_LOADER, SHOW_ERROR } from 'redux/types';
 
 const initialState = {
   loading: false,
@@ -23,11 +21,6 @@ export const appReducer = (state = initialState, action) => {
       return {
         ...state,
         error: action.payload,
-      };
-    case HIDE_ERROR:
-      return {
-        ...state,
-        error: null,
       };
     default:
       return state;
