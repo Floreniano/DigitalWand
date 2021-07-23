@@ -1,13 +1,15 @@
+import { FETCH_COMMENTS } from 'redux/types';
+
 const initialState = {
-  comments: [],
+  fetchedComments: [],
 };
 
 const comments = (state = initialState, action) => {
   switch (action.type) {
-    case 'SET_COMMENTS':
+    case FETCH_COMMENTS:
       return {
         ...state,
-        comments: action.payload,
+        fetchedComments: action.payload,
       };
     default:
       return state;

@@ -4,62 +4,38 @@ import Comment from 'pages/CommentsPage/components/Comment';
 import PostToComment from 'pages/CommentsPage/components/PostToComment';
 import Preloader from 'components/Preloader';
 import { Header } from 'components/Header';
-import { setComments } from 'redux/actions/comments';
+import Error from 'components/Error';
+
+import { fetchComments } from 'redux/actions/comments';
+import { showError } from 'redux/actions/error';
 import { connect } from 'react-redux';
 
 class CommentsPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
-      isLoaded: false,
-    };
-  }
-
   componentDidMount() {
-    const urlComments = 'https://jsonplaceholder.typicode.com/comments?postId=1';
-
-    fetch(urlComments)
-      .then((response) => response.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-          });
-          this.props.setComments(result);
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error,
-          });
-        },
-      );
+    this.props.fetchComments();
   }
 
   render() {
-    const { error, isLoaded } = this.state;
-    const { allPosts: posts, allComments: comments } = this.props;
-    if (error) {
-      return <p>Ошибка {error.message}</p>;
-    }
-    if (!isLoaded) {
+    const {
+      fetchedPosts: posts,
+      fetchedComments: comments,
+      loading: loader,
+      error: errorText,
+    } = this.props;
+    if (loader) {
       return <Preloader />;
     }
     return (
-      <div className='content'>
+      <div className="content">
         <Header />
-        <div className='post_item'>
+        {errorText && <Error text={errorText} />}
+        <div className="post_item">
           {posts.map((post) => (
-            <PostToComment
-            key={post.id}
-            title={post.title}
-            body={post.body}
-            id={post.id} />
+            <PostToComment key={post.id} title={post.title} body={post.body} id={post.id} />
           ))}
         </div>
-        <div className='comments'>
-          <div className='comments__inner'>
+        <div className="comments">
+          <div className="comments__inner">
             {comments.map((comment) => (
               <Comment
                 key={comment.id}
@@ -76,13 +52,26 @@ class CommentsPage extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  allPosts: state.posts.posts,
-  allComments: state.comments.comments,
-});
+// const mapStateToProps = (state) => ({
+//   fetchedPosts: state.posts.fetchedPosts,
+//   loading: state.app.loading,
+//   error: state.app.error,
+//   allComments: state.comments.comments,
+// });
+
+const mapStateToProps = (state) => {
+  console.log(state.comments);
+  return {
+    fetchedPosts: state.posts.fetchedPosts,
+    fetchedComments: state.comments.fetchedComments,
+    loading: state.app.loading,
+    error: state.app.error,
+  };
+};
 
 const mapDispatchToProps = {
-  setComments,
+  fetchComments,
+  showError,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentsPage);

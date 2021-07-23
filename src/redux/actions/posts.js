@@ -1,6 +1,6 @@
 import { FETCH_POSTS, SAVE_POST_ID } from 'redux/types';
 import { hideLoader, showLoader } from 'redux/actions/loader';
-import { showError } from './error';
+import { showError } from 'redux/actions/error';
 
 export const savePostId = (id) => ({
   type: SAVE_POST_ID,
