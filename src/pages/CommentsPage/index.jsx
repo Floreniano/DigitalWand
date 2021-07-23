@@ -6,6 +6,7 @@ import Preloader from 'components/Preloader';
 import { Header } from 'components/Header';
 import Error from 'components/Error';
 
+import { fetchPosts } from 'redux/actions/posts';
 import { fetchComments } from 'redux/actions/comments';
 import { showError } from 'redux/actions/error';
 import { connect } from 'react-redux';
@@ -13,6 +14,7 @@ import { connect } from 'react-redux';
 class CommentsPage extends Component {
   componentDidMount() {
     this.props.fetchComments();
+    this.props.fetchPosts();
   }
 
   render() {
@@ -61,6 +63,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   fetchComments,
+  fetchPosts,
   showError,
 };
 
