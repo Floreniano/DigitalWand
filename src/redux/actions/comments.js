@@ -6,6 +6,7 @@ export function fetchComments() {
   return async (dispatch) => {
     try {
       dispatch(showLoader());
+      dispatch(showError(''));
       const response = await fetch('https://jsonplaceholder.typicode.com/comments?postId=1');
       const json = await response.json();
       dispatch({

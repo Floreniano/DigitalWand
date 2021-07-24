@@ -8,7 +8,6 @@ import Error from 'components/Error';
 
 import { fetchPosts } from 'redux/actions/posts';
 import { fetchComments } from 'redux/actions/comments';
-import { showError } from 'redux/actions/error';
 import { connect } from 'react-redux';
 
 class CommentsPage extends Component {
@@ -30,7 +29,6 @@ class CommentsPage extends Component {
     return (
       <div className="content">
         <Header />
-        {errorText && <Error text={errorText} />}
         <div className="post_item">
           {posts.map((post) => (
             <PostToComment key={post.id} title={post.title} body={post.body} id={post.id} />
@@ -47,6 +45,7 @@ class CommentsPage extends Component {
                 id={comment.postId}
               />
             ))}
+            {errorText && <Error text={errorText} />}
           </div>
         </div>
       </div>
@@ -64,7 +63,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   fetchComments,
   fetchPosts,
-  showError,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentsPage);

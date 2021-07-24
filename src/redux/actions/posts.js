@@ -11,6 +11,7 @@ export function fetchPosts() {
   return async (dispatch) => {
     try {
       dispatch(showLoader());
+      dispatch(showError(''));
       const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=100');
       const json = await response.json();
       dispatch({
