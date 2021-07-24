@@ -13,7 +13,7 @@ function Comment({
     return null;
   }
   return (
-    <div className='comments__inner-item'>
+    <div className='comments-item'>
       <div className='user'>
         <img className='user__img' src={logo} alt='user' />
         <p className='user__email'>{email}</p>

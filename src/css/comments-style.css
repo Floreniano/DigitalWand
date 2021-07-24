@@ -19,7 +19,7 @@
 }
 
 .comments {
-    margin-top: 150px;
+    margin-top: 200px;
     padding-bottom: 40px;
     position: relative;
 }
@@ -39,9 +39,10 @@
     margin-right: 15px;
 }
 
-.user__email{
+.user__email {
     word-break: break-all;
 }
+
 .comments__text-title {
     font-size: 24px;
 }
@@ -60,24 +61,40 @@
 .comments__text-text::first-letter {
     text-transform: uppercase;
 }
-.comments__inner-item{
+
+.comments-item {
     padding-top: 50px;
 }
-.comments__inner-item:first-child{
+
+.comments-item:first-child {
     padding-top: 0;
 }
-.comments::after {
+
+.comments::before {
     position: absolute;
     content: "Комментарии";
     left: 0;
     top: -50px;
     font-size: 24px;
 }
-.btn__back{
+.comments::after{
+    position: absolute;
+    content: "Комментариев нет";
+    left: 0;
+    top: 0;
+    font-size: 18px;
+    opacity: 0;
+}
+
+.comments:empty::after{
+    opacity: 1;
+}
+.btn__back {
     display: flex;
 }
+
 @media (max-width: 500px) {
-    .comments__text-text{
+    .comments__text-text {
         max-width: 90%;
     }
 }

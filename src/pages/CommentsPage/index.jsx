@@ -35,18 +35,16 @@ class CommentsPage extends Component {
           ))}
         </div>
         <div className="comments">
-          <div className="comments__inner">
-            {comments.map((comment) => (
-              <Comment
-                key={comment.id}
-                email={comment.email}
-                name={comment.name}
-                body={comment.body}
-                id={comment.postId}
-              />
-            ))}
-            {errorText && <Error text={errorText} />}
-          </div>
+          {comments.map((comment) => (
+            <Comment
+              key={comment.id}
+              email={comment.email}
+              name={comment.name}
+              body={comment.body}
+              id={comment.postId}
+            />
+          ))}
+          {errorText && <Error text={errorText} />}
         </div>
       </div>
     );
