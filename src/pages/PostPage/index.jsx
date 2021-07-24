@@ -6,7 +6,6 @@ import { Header } from 'components/Header';
 import Error from 'components/Error';
 
 import { fetchPosts } from 'redux/actions/posts';
-import { showError } from 'redux/actions/error';
 import { connect } from 'react-redux';
 
 class PostsPage extends Component {
@@ -23,11 +22,15 @@ class PostsPage extends Component {
       <div className="content">
         <Header></Header>
         {errorText && <Error text={errorText} />}
-        <div className="posts__list">
-          {posts.map((post) => (
-            <Post key={post.id} title={post.title} body={post.body} id={post.id} />
-          ))}
-        </div>
+        {posts.length === 0 ? (
+          <div className="post__none">Постов нету</div>
+        ) : (
+          <div className="posts__list">
+            {posts.map((post) => (
+              <Post key={post.id} title={post.title} body={post.body} id={post.id} />
+            ))}
+          </div>
+        )}
       </div>
     );
   }
@@ -41,7 +44,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   fetchPosts,
-  showError,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostsPage);

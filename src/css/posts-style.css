@@ -64,6 +64,14 @@
     text-align: center;
     padding-top: 80px;
 }
+.post__none{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    border-bottom: 1px solid #ffff;
+    padding-bottom: 3px;
+}
 @media (max-width: 650px) {
     .posts__list-item {
         width: 100%;
