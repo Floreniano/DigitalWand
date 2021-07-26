@@ -23,7 +23,7 @@ class PostsPage extends Component {
         <Header></Header>
         {errorText && <Error text={errorText} />}
         {posts.length === 0 ? (
-          <div className="post__none">Постов нету</div>
+          <div className="post__none"><span className='post__none-text'>Постов нету</span></div>
         ) : (
           <div className="posts__list">
             {posts.map((post) => (

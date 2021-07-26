@@ -7,5 +7,5 @@ export const savePostId = (id) => ({
 });
 
 export function fetchPosts() {
-  return fetchItems('posts?_limit=100', FETCH_POSTS);
+  return fetchItems('posts?_limit=10', FETCH_POSTS);
 }
