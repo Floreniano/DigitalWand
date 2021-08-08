@@ -1,127 +1,146 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import SlideToggle from 'react-slide-toggle';
 
 export default function Footer() {
-  const [listActive, setListActive] = useState(false);
-  const handleOpenInfo = () => {
-    setListActive(!listActive);
-  };
-
   return (
     <footer className="footer">
       <div className="content">
         <div className="footer__inner">
           <div className="footer__list">
-            <div className="footer__list-item">
-              <h4
-                className={`footer__list-item-title ${listActive ? 'active' : ''}`}
-                onTouchStart={handleOpenInfo}
-              >
-                Get in touch
-              </h4>
-              <ul className="footer__list-info">
-                <li className="footer__list-info-item">
-                  <Link className="footer__list-info-link" to="">
-                    About Us
-                  </Link>
-                </li>
-                <li className="footer__list-info-item">
-                  <Link className="footer__list-info-link" to="">
-                    Careers
-                  </Link>
-                </li>
-                <li className="footer__list-info-item">
-                  <Link className="footer__list-info-link" to="">
-                    Press Releases
-                  </Link>
-                </li>
-                <li className="footer__list-info-item">
-                  <Link className="footer__list-info-link" to="">
-                    Blog
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div className="footer__list-item">
-              <h4 className="footer__list-item-title">Connections</h4>
-              <ul className="footer__list-info">
-                <li className="footer__list-info-item">
-                  <Link className="footer__list-info-link" to="">
-                    Connections
-                  </Link>
-                </li>
-                <li className="footer__list-info-item">
-                  <Link className="footer__list-info-link" to="">
-                    Twitter
-                  </Link>
-                </li>
-                <li className="footer__list-info-item">
-                  <Link className="footer__list-info-link" to="">
-                    Instagram
-                  </Link>
-                </li>
-                <li className="footer__list-info-item">
-                  <Link className="footer__list-info-link" to="">
-                    Youtube
-                  </Link>
-                </li>
-                <li className="footer__list-info-item">
-                  <Link className="footer__list-info-link" to="">
-                    LinkedIn
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div className="footer__list-item">
-              <h4 className="footer__list-item-title">Earnings</h4>
-              <ul className="footer__list-info">
-                <li className="footer__list-info-item">
-                  <Link className="footer__list-info-link" to="">
-                    Become an Affiliate
-                  </Link>
-                </li>
-                <li className="footer__list-info-item">
-                  <Link className="footer__list-info-link" to="">
-                    Advertise your product
-                  </Link>
-                </li>
-                <li className="footer__list-info-item">
-                  <Link className="footer__list-info-link" to="">
-                    Sell on Market
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div className="footer__list-item">
-              <h4 className="footer__list-item-title">Account</h4>
-              <ul className="footer__list-info">
-                <li className="footer__list-info-item">
-                  <Link className="footer__list-info-link" to="">
-                    Your account
-                  </Link>
-                </li>
-                <li className="footer__list-info-item">
-                  <Link className="footer__list-info-link" to="">
-                    Returns Centre
-                  </Link>
-                </li>
-                <li className="footer__list-info-item">
-                  <Link className="footer__list-info-link" to="">
-                    100 % purchase protection
-                  </Link>
-                </li>
-                <li className="footer__list-info-item">
-                  <Link className="footer__list-info-link" to="">
-                    Chat with us
-                  </Link>
-                </li>
-                <li className="footer__list-info-item">
-                  <Link className="footer__list-info-link" to="">
-                    Help
-                  </Link>
-                </li>
-              </ul>
-            </div>
+          <SlideToggle
+              duration={400}
+              render={({ toggle, setCollapsibleElement }) => (
+                <div className="footer__list-item">
+                  <h4 className="footer__list-item-title" onTouchStart={toggle}>
+                    Get in touch
+                  </h4>
+                  <ul className="footer__list-info" ref={setCollapsibleElement}>
+                    <li className="footer__list-info-item">
+                      <Link className="footer__list-info-link" to="">
+                        About Us
+                      </Link>
+                    </li>
+                    <li className="footer__list-info-item">
+                      <Link className="footer__list-info-link" to="">
+                        Careers
+                      </Link>
+                    </li>
+                    <li className="footer__list-info-item">
+                      <Link className="footer__list-info-link" to="">
+                        Press Releases
+                      </Link>
+                    </li>
+                    <li className="footer__list-info-item">
+                      <Link className="footer__list-info-link" to="">
+                        Blog
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              )}
+            />
+            <SlideToggle
+              duration={400}
+              render={({ toggle, setCollapsibleElement }) => (
+                <div className="footer__list-item">
+                  <h4 className="footer__list-item-title" onTouchStart={toggle}>
+                   Connections
+                  </h4>
+                  <ul className="footer__list-info" ref={setCollapsibleElement}>
+                    <li className="footer__list-info-item">
+                      <Link className="footer__list-info-link" to="">
+                        Facebook
+                      </Link>
+                    </li>
+                    <li className="footer__list-info-item">
+                      <Link className="footer__list-info-link" to="">
+                       Twitter
+                      </Link>
+                    </li>
+                    <li className="footer__list-info-item">
+                      <Link className="footer__list-info-link" to="">
+                        Instagram
+                      </Link>
+                    </li>
+                    <li className="footer__list-info-item">
+                      <Link className="footer__list-info-link" to="">
+                       Youtube
+                      </Link>
+                    </li>
+                    <li className="footer__list-info-item">
+                      <Link className="footer__list-info-link" to="">
+                      LinkedIn
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              )}
+            />
+            <SlideToggle
+              duration={400}
+              render={({ toggle, setCollapsibleElement }) => (
+                <div className="footer__list-item">
+                  <h4 className="footer__list-item-title" onTouchStart={toggle}>
+                    Earnings
+                  </h4>
+                  <ul className="footer__list-info" ref={setCollapsibleElement}>
+                    <li className="footer__list-info-item">
+                      <Link className="footer__list-info-link" to="">
+                        Become an Affiliate
+                      </Link>
+                    </li>
+                    <li className="footer__list-info-item">
+                      <Link className="footer__list-info-link" to="">
+                        Advertise your product
+                      </Link>
+                    </li>
+                    <li className="footer__list-info-item">
+                      <Link className="footer__list-info-link" to="">
+                        Sell on Market
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              )}
+            />
+            <SlideToggle
+              duration={400}
+              render={({ toggle, setCollapsibleElement }) => (
+                <div className="footer__list-item">
+                  <h4 className="footer__list-item-title" onTouchStart={toggle}>
+                    Account
+                  </h4>
+                  <ul className="footer__list-info" ref={setCollapsibleElement}>
+                    <li className="footer__list-info-item">
+                      <Link className="footer__list-info-link" to="">
+                        Your account
+                      </Link>
+                    </li>
+                    <li className="footer__list-info-item">
+                      <Link className="footer__list-info-link" to="">
+                        Returns Centre
+                      </Link>
+                    </li>
+                    <li className="footer__list-info-item">
+                      <Link className="footer__list-info-link" to="">
+                        100 % purchase protection
+                      </Link>
+                    </li>
+                    <li className="footer__list-info-item">
+                      <Link className="footer__list-info-link" to="">
+                        Chat with us
+                      </Link>
+                    </li>
+                     <li className="footer__list-info-item">
+                      <Link className="footer__list-info-link" to="">
+                        Help
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              )}
+            />
           </div>
           <div className="products__tags">
             <h3 className="products__tags-title">Product tags</h3>

@@ -827,7 +827,6 @@ input[type='number'] {
     transition: all 0.4s ease-in-out;
   }
   .footer__list-info {
-    display: none;
     border-radius: 12px;
   }
   .footer__list-info-item:last-child {
