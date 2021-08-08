@@ -1,15 +1,18 @@
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
+// assets
 import logo from 'assets/img/logo.png';
 import search from 'assets/img/ic-actions-search.svg';
 import cabinet from 'assets/img/ic-actions-user.svg';
 import basket from 'assets/img/basket.svg';
-import { Link } from 'react-router-dom';
 
 export default function Header() {
   const { totalCount } = useSelector(({ goods }) => ({
     totalCount: goods.totalCount,
   }));
+  const [menuActive, setMenuActive] = useState(false);
   return (
     <header className="header">
       <div className="content">
@@ -55,10 +58,13 @@ export default function Header() {
               </li>
             </ul>
           </nav>
-          <div className="burger__menu">
+          <div
+            className={`burger__menu ${menuActive ? 'active' : ''}`}
+            onClick={() => setMenuActive(!menuActive)}
+          >
             <span></span>
           </div>
-          <div className="nav__adaptive">
+          <div className={`nav__adaptive ${menuActive ? 'active' : ''}`}>
             <h2 className="nav__adaptive-title">Меню</h2>
             <div className="header__contacts adaptive">
               <ul className="header__contacts__list">
