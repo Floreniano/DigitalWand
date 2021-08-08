@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "errorMessage": "",
+  "data": {
+    "auth": true,
+    "user": {
+      "id": 1,
+      "phone": "79999999999",
+      "name": "Bob",
+      "address": "Russia, Very-long street",
+      "sale": 10
+    }
+  }
+}

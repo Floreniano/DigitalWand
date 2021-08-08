@@ -1,0 +1,60 @@
+import React, { Component } from 'react';
+// components
+import Header from 'components/Header';
+import Footer from 'components/Footer';
+import Card from 'pages/card/components/Card';
+
+import { connect } from 'react-redux';
+import dataProduct from 'redux/actions/product';
+import { addToCart } from 'redux/actions/cart';
+
+class CardPage extends Component {
+  componentDidMount() {
+    this.props.dataProduct();
+  }
+
+  addCardToCart = (obj) => {
+    this.props.addToCart(obj);
+  };
+
+  render() {
+    const { product: productItem, loading: loader } = this.props;
+    if (loader) {
+      return <Preloader />;
+    }
+    return (
+      <div className="card-content">
+        <Header></Header>
+
+        <section className="card-description">
+          <div className="content description-card">
+            <Card
+              key={productItem.id}
+              fullDescription={productItem.fullDescription}
+              images={productItem.images}
+              name={productItem.name}
+              price={productItem.price}
+              ratingStar={productItem.rating}
+              id={productItem.id}
+              mainImage={productItem.mainImage}
+              onClickAddCart={this.addCardToCart}
+            />
+          </div>
+        </section>
+
+        <Footer></Footer>
+      </div>
+    );
+  }
+}
+const mapStateToProps = (state) => ({
+  product: state.product.product,
+  loading: state.app.loading,
+});
+
+const mapDispatchToProps = {
+  dataProduct,
+  addToCart,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CardPage);
