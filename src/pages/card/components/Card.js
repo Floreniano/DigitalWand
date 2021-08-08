@@ -39,7 +39,7 @@ export default function Card({
   if (id !== parseInt(localStorage.catalogId, 16)) {
     return (
       <div className="card__inner not">
-        <h1 className="not-found">Нету подробностей о товаре</h1>
+        <h1 className="not-found">Нет подробностей о товаре</h1>
       </div>
     );
   }
