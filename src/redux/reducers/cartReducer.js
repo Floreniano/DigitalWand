@@ -1,4 +1,4 @@
-import { ADD_TO_CART } from 'redux/types';
+import { ADD_TO_CART, REMOVE_CART_ITEM } from 'redux/types';
 
 const initialState = {
   items: [],
@@ -6,24 +6,49 @@ const initialState = {
   totalPrice: 0,
 };
 
+const getTotalPrice = (arr) => arr.reduce((sum, obj) => obj.price + sum, 0);
+
 const goods = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_CART: {
+      const currentCardsItems = !state.items[action.payload.id]
+        ? [action.payload]
+        : [...state.items[action.payload.id].items, action.payload];
       const newItems = {
         ...state.items,
-        [action.payload.id]: !state.items[action.payload.id]
-          ? [action.payload]
-          : [...state.items[action.payload.id], action.payload],
+        [action.payload.id]: {
+          items: currentCardsItems,
+          totalPrice: getTotalPrice(currentCardsItems),
+        },
       };
-      /* eslint prefer-spread: "off" */
-      const allCards = [].concat.apply([], Object.values(newItems));
-      const totalPrice = allCards.reduce((sum, obj) => obj.price + sum, 0);
+      const totalCount = Object.keys(newItems).reduce(
+        (sum, key) => newItems[key].items.length + sum,
+        0,
+      );
+      const totalPrice = Object.keys(newItems).reduce(
+        (sum, key) => newItems[key].totalPrice + sum,
+        0,
+      );
 
       return {
         ...state,
         items: newItems,
-        totalCount: allCards.length,
+        totalCount,
         totalPrice,
+      };
+    }
+    case REMOVE_CART_ITEM: {
+      const newItems = {
+        ...state.items,
+      };
+      const currentTotalPrice = newItems[action.payload].totalPrice;
+      const currentTotalCount = newItems[action.payload].items.length;
+      delete newItems[action.payload];
+      return {
+        ...state,
+        items: newItems,
+        totalPrice: state.totalPrice - currentTotalPrice,
+        totalCount: state.totalCount - currentTotalCount,
       };
     }
 

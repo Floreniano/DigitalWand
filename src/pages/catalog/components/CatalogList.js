@@ -38,6 +38,7 @@ export default function Catalog({
       price,
       images,
       mainImage,
+      rating,
     };
     onClickAddCart(obj);
   };

@@ -358,6 +358,8 @@
   -webkit-transition: all 0.8s ease-in-out;
   transition: all 0.8s ease-in-out;
   z-index: 1;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .catalog__list-img:hover {

@@ -30,12 +30,12 @@ class CardPage extends Component {
           <div className="content description-card">
             <Card
               key={productItem.id}
-              fullDescription={productItem.fullDescription}
-              images={productItem.images}
+              id={productItem.id}
               name={productItem.name}
+              fullDescription={productItem.fullDescription}
               price={productItem.price}
               ratingStar={productItem.rating}
-              id={productItem.id}
+              images={productItem.images}
               mainImage={productItem.mainImage}
               onClickAddCart={this.addCardToCart}
             />

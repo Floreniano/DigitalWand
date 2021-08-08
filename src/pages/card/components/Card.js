@@ -6,12 +6,12 @@ import SliderArrowNext from 'assets/img/slick-arrow-next.png';
 import SliderArrowPrev from 'assets/img/slick-arrow-prev.png';
 
 export default function Card({
-  fullDescription,
-  images,
+  id,
   name,
+  fullDescription,
   price,
   ratingStar,
-  id,
+  images,
   mainImage,
   onClickAddCart,
 }) {
@@ -31,6 +31,7 @@ export default function Card({
       price,
       images,
       mainImage,
+      rating,
     };
     onClickAddCart(obj);
   };

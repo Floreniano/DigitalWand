@@ -439,13 +439,9 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   margin-top: 8px;
 }
 
@@ -461,28 +457,19 @@
   display: none;
 }
 
-.card__product-rating input:checked ~ label {
-  background: url("assets/img/star_rating-active.svg") no-repeat;
-}
-
 .card__product-rating label {
-  height: 20px;
-  width: 20px;
-  padding-right: 22px;
+  width: 16px;
+  height: 16px;
   cursor: pointer;
-  background: url("assets/img/star_rating-no-active.svg") no-repeat;
-  background-position: center center;
-  -webkit-transition: all 0.4s ease-in-out;
-  transition: all 0.4s ease-in-out;
 }
 
-.card__product-rating label:hover,
-.card__product-rating label:hover ~ label {
-  background: url("assets/img/star_rating-active.svg") no-repeat;
+.card__product-rating label:not(:last-child) {
+  padding-right: 18px;
+}
+
+.card__product-rating-star {
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
-  height: 20px;
-  width: 20px;
 }
 
 .card__product-cost {
@@ -687,6 +674,24 @@
   font-family: 'Poppins', sans-serif;
   color: #6a983c;
   white-space: nowrap;
+}
+
+.basket__none {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 30px;
+  padding: 35px 0;
 }
 
 @media (max-width: 1100px) {

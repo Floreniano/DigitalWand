@@ -295,8 +295,7 @@
   }
   &-rating {
     display: flex;
-    flex-direction: row-reverse;
-    justify-content: flex-end;
+    justify-content: flex-start;
     margin-top: 8px;
     input {
       position: absolute;
@@ -309,24 +308,16 @@
       visibility: hidden;
       display: none;
     }
-    input:checked ~ label {
-      background: url('assets/img/star_rating-active.svg') no-repeat;
-    }
-    label {
-      height: 20px;
-      width: 20px;
-      padding-right: 22px;
+    label{
+      width: 16px;
+      height: 16px;
       cursor: pointer;
-      background: url('assets/img/star_rating-no-active.svg') no-repeat;
-      background-position: center center;
-      transition: all 0.4s ease-in-out;
-      &:hover,
-      &:hover ~ label {
-        background: url('assets/img/star_rating-active.svg') no-repeat;
-        transition: all 0.4s ease-in-out;
-        height: 20px;
-        width: 20px;
+      &:not(:last-child){
+        padding-right: 18px;
       }
+    }
+    &-star{
+      transition: all 0.4s ease-in-out;
     }
   }
   &-cost {
@@ -464,6 +455,14 @@
   }
 }
 
+.basket__none{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  padding: 35px 0;
+}
 @media (max-width: 1100px) {
   .card__info {
     &-inputs {
