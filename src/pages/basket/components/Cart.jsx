@@ -24,9 +24,7 @@ function Cart({ id, name, rating, images, mainImage, totalPrice, totalCount, onR
               >
                 <img src={closePicture}></img>
               </button>
-              <span>
-                Вы действительно хотите <br></br>удалить выбранный товар?
-              </span>
+              <span className="popup-text">Вы действительно хотите удалить выбранный товар?</span>
               <button className="btn confirm" onClick={handleRemoveClick}>
                 Подтвердить
               </button>
