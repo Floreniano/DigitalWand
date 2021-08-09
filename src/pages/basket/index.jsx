@@ -19,10 +19,7 @@ import Cart from './components/Cart';
 
 class BasketPage extends Component {
   onRemoveItem = (id) => {
-    /* eslint no-alert: "off" */
-    if (window.confirm('Вы действительно хотите удалить?')) {
-      this.props.removeCartItem(id);
-    }
+    this.props.removeCartItem(id);
   };
 
   render() {

@@ -1,4 +1,5 @@
 import React from 'react';
+import Popup from 'reactjs-popup';
 import StarList from 'components/StarList';
 
 function Cart({ id, name, rating, images, mainImage, totalPrice, totalCount, onRemoveItem }) {
@@ -11,9 +12,20 @@ function Cart({ id, name, rating, images, mainImage, totalPrice, totalCount, onR
         {images.map((image) => (image.id === mainImage ? (
             <img className="card__product-img" src={image.url} alt="product" key={image.id}></img>
         ) : null))}
-        <span className="card__product-remove" onClick={handleRemoveClick}>
-          Remove
-        </span>
+        <Popup
+          trigger={
+            <span className="card__product-remove">
+              Remove
+            </span>
+          }
+        >
+          <div className="popup">
+            <span>
+              Вы действительно хотите <br></br>удалить текущий товар?
+            </span>
+            <button className="btn confirm" onClick={handleRemoveClick}>Подтвердить</button>
+          </div>
+        </Popup>
       </div>
       <div className="card__product-info">
         <h3 className="card__product-title">
