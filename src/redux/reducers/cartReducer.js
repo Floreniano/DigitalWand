@@ -11,6 +11,16 @@ const initialState = {
 const getSubTotalPrice = (arr) => arr.reduce((sum, obj) => obj.price + sum, 0);
 const getSubTotalTax = (arr) => arr.reduce((sum, obj) => obj.price * 0.17 + sum, 0);
 
+const get = (obj, path) => {
+  const [firstKey, ...keys] = path.split('.');
+  return keys.reduce((val, key) => val[key], obj[firstKey]);
+};
+
+const getTotalSum = (obj, path) => Object.values(obj).reduce((sum, obj1) => {
+  const value = get(obj1, path);
+  return sum + value;
+}, 0);
+
 const goods = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_CART: {
@@ -23,18 +33,12 @@ const goods = (state = initialState, action) => {
         [action.payload.id]: {
           items: currentCardsItems,
           subTotalPrice: getSubTotalPrice(currentCardsItems),
-          tax: getSubTotalTax(currentCardsItems),
+          tax: Math.floor(getSubTotalTax(currentCardsItems)),
         },
       };
-      const totalCount = Object.keys(newItems).reduce(
-        (sum, key) => newItems[key].items.length + sum,
-        0,
-      );
-      const subTotalPrice = Object.keys(newItems).reduce(
-        (sum, key) => newItems[key].subTotalPrice + sum,
-        0,
-      );
-      const tax = Object.keys(newItems).reduce((sum, key) => newItems[key].tax + sum, 0);
+      const totalCount = getTotalSum(newItems, 'items.length');
+      const subTotalPrice = getTotalSum(newItems, 'subTotalPrice');
+      const tax = Number(getTotalSum(newItems, 'tax').toFixed(2));
 
       return {
         ...state,
