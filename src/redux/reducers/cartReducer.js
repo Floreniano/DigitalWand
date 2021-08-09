@@ -8,8 +8,7 @@ const initialState = {
   totalPrice: 0,
 };
 
-const getSubTotalPrice = (arr) => arr.reduce((sum, obj) => obj.price + sum, 0);
-const getSubTotalTax = (arr) => arr.reduce((sum, obj) => obj.price * 0.17 + sum, 0);
+const getSubTotal = (arr, factor) => arr.reduce((sum, obj) => obj.price * factor + sum, 0);
 
 const get = (obj, path) => {
   const [firstKey, ...keys] = path.split('.');
@@ -32,8 +31,8 @@ const goods = (state = initialState, action) => {
         ...state.items,
         [action.payload.id]: {
           items: currentCardsItems,
-          subTotalPrice: getSubTotalPrice(currentCardsItems),
-          tax: Math.round(getSubTotalTax(currentCardsItems)),
+          subTotalPrice: getSubTotal(currentCardsItems, 1),
+          tax: Math.round(getSubTotal(currentCardsItems, 0.17)),
         },
       };
       const totalCount = getTotalSum(newItems, 'items.length');

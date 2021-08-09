@@ -24,7 +24,7 @@
     "react/jsx-uses-vars": "error",
     "no-plusplus": "off",
     "no-unused-expressions": "off",
-    "for-direction":"off",
+    "for-direction":"off"
   },
   "parser": "babel-eslint",
   "parserOptions": {

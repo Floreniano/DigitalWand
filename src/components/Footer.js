@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="content">
         <div className="footer__inner">
           <div className="footer__list">
-          <SlideToggle
+            <SlideToggle
               duration={400}
               render={({ toggle, setCollapsibleElement }) => (
                 <div className="footer__list-item">
@@ -45,7 +45,7 @@ export default function Footer() {
               render={({ toggle, setCollapsibleElement }) => (
                 <div className="footer__list-item">
                   <h4 className="footer__list-item-title" onTouchStart={toggle}>
-                   Connections
+                    Connections
                   </h4>
                   <ul className="footer__list-info" ref={setCollapsibleElement}>
                     <li className="footer__list-info-item">
@@ -55,7 +55,7 @@ export default function Footer() {
                     </li>
                     <li className="footer__list-info-item">
                       <Link className="footer__list-info-link" to="">
-                       Twitter
+                        Twitter
                       </Link>
                     </li>
                     <li className="footer__list-info-item">
@@ -65,12 +65,12 @@ export default function Footer() {
                     </li>
                     <li className="footer__list-info-item">
                       <Link className="footer__list-info-link" to="">
-                       Youtube
+                        Youtube
                       </Link>
                     </li>
                     <li className="footer__list-info-item">
                       <Link className="footer__list-info-link" to="">
-                      LinkedIn
+                        LinkedIn
                       </Link>
                     </li>
                   </ul>
@@ -132,7 +132,7 @@ export default function Footer() {
                         Chat with us
                       </Link>
                     </li>
-                     <li className="footer__list-info-item">
+                    <li className="footer__list-info-item">
                       <Link className="footer__list-info-link" to="">
                         Help
                       </Link>
