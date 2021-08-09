@@ -26,7 +26,7 @@ class BasketPage extends Component {
   };
 
   render() {
-    const { items, totalPrice, totalCount, loading: loader } = this.props;
+    const { items, totalCount, subTotalPrice, tax, totalPrice, loading: loader } = this.props;
     const addedCards = Object.keys(items).map((key) => items[key].items[0]);
     if (loader) {
       return <Preloader />;
@@ -301,7 +301,7 @@ class BasketPage extends Component {
                       ratingStars={card.rating}
                       images={card.images}
                       mainImage={card.mainImage}
-                      totalPrice={items[card.id].totalPrice}
+                      totalPrice={items[card.id].subTotalPrice}
                       totalCount={items[card.id].items.length}
                       onRemoveItem={this.onRemoveItem}
                     />
@@ -309,11 +309,11 @@ class BasketPage extends Component {
                   <div className="cards__cost">
                     <div className="cards__cost-subtotal">
                       <span className="cards__cost-text">Subtotal</span>
-                      <span className="cards__cost-cost subtotal">73.98 USD</span>
+                      <span className="cards__cost-cost subtotal">{subTotalPrice} USD</span>
                     </div>
                     <div className="cards__cost-tax">
                       <span className="cards__cost-text">Tax</span>
-                      <span className="cards__cost-cost tax">17% 16.53 USD</span>
+                      <span className="cards__cost-cost tax">17% {tax} USD</span>
                     </div>
                     <div className="cards__cost-shipping">
                       <span className="cards__cost-text">Shipping</span>
@@ -356,8 +356,10 @@ class BasketPage extends Component {
 }
 const mapStateToProps = (state) => ({
   items: state.goods.items,
-  totalPrice: state.goods.totalPrice,
   totalCount: state.goods.totalCount,
+  subTotalPrice: state.goods.subTotalPrice,
+  tax: state.goods.tax,
+  totalPrice: state.goods.totalPrice,
   loading: state.app.loading,
 });
 
