@@ -59,7 +59,7 @@ const goods = (state = initialState, action) => {
         totalCount: state.totalCount - currentTotalCount,
         subTotalPrice: state.subTotalPrice - currentTotalPrice,
         tax: state.tax - currentTotalTax,
-        totalPrice: currentTotalPrice + currentTotalTax,
+        totalPrice: state.totalPrice - currentTotalTax - currentTotalPrice,
       };
     }
 
