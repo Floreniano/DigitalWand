@@ -34,7 +34,7 @@ class CardPage extends Component {
               name={productItem.name}
               fullDescription={productItem.fullDescription}
               price={productItem.price}
-              ratingStar={productItem.rating}
+              rating={productItem.rating}
               images={productItem.images}
               mainImage={productItem.mainImage}
               onClickAddCart={this.addCardToCart}

@@ -106,7 +106,7 @@
 }
 
 .card__rating-list label:not(:last-child) {
-  padding-right: 18px;
+  padding-right: 2px;
 }
 
 .card__rating-list-star {

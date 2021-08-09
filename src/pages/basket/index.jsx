@@ -298,7 +298,7 @@ class BasketPage extends Component {
                       key={card.id}
                       id={card.id}
                       name={card.name}
-                      ratingStars={card.rating}
+                      rating={card.rating}
                       images={card.images}
                       mainImage={card.mainImage}
                       totalPrice={items[card.id].subTotalPrice}

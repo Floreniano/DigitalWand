@@ -313,7 +313,7 @@
       height: 16px;
       cursor: pointer;
       &:not(:last-child){
-        padding-right: 18px;
+        padding-right: 2px;
       }
     }
     &-star{
@@ -427,6 +427,12 @@
     border: none;
     font-size: 15px;
     white-space: nowrap;
+    border-radius: 12px;
+    transition: background-color 0.4s ease-in-out;
+    padding: 0px;
+    &:hover{
+      background-color: #A9A9A9;
+    }
   }
 }
 .total__cost {
