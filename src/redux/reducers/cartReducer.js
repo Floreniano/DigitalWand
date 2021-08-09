@@ -33,13 +33,12 @@ const goods = (state = initialState, action) => {
         [action.payload.id]: {
           items: currentCardsItems,
           subTotalPrice: getSubTotalPrice(currentCardsItems),
-          tax: Math.floor(getSubTotalTax(currentCardsItems)),
+          tax: Math.round(getSubTotalTax(currentCardsItems)),
         },
       };
       const totalCount = getTotalSum(newItems, 'items.length');
       const subTotalPrice = getTotalSum(newItems, 'subTotalPrice');
-      const tax = Number(getTotalSum(newItems, 'tax').toFixed(2));
-
+      const tax = getTotalSum(newItems, 'tax');
       return {
         ...state,
         items: newItems,
