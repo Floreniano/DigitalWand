@@ -55,8 +55,8 @@ export default function Catalog({
       <div className="catalog__list-rating">{createStars()}</div>
       <div className="catalog__list-bottom">
         <div className="catalog__list-bottom-price">
-          <span className="catalog__list-bottom-price-cost">{price} USD</span>
-          {/* Скидка <span className='catalog__list-bottom-price-discount'>48.56</span> */}
+          <span className="catalog__list-bottom-price-cost">{price} ₽</span>
+          {/* Скидка <span className='catalog__list-bottom-price-discount'>48.56 ₽</span> */}
         </div>
         <div className="catalog__list-bottom-buttons">
           <Link className="btn catalog__list-bottom-btn more" onClick={saveId} to="/card">

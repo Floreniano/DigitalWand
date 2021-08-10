@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 // components
 import Header from 'components/Header';
 import Footer from 'components/Footer';
-import Preloader from 'components/Preloader';
 import Catalog from 'pages/catalog/components/CatalogList.js';
 
 // assets
@@ -46,10 +45,7 @@ class CatalogPage extends Component {
   }
 
   render() {
-    const { catalog: catalogItems, loading: loader } = this.props;
-    if (loader) {
-      return <Preloader />;
-    }
+    const { catalog: catalogItems } = this.props;
     return (
       <div className="catalog">
         <Header></Header>
@@ -445,13 +441,7 @@ class CatalogPage extends Component {
 const mapStateToProps = (state) => ({
   catalog: state.catalog.catalog,
   countCart: state.catalog.totalCount,
-  loading: state.app.loading,
 });
-
-// const mapStateToProps = (state) => {
-//   console.log(state);
-//   return state.catalog.catalog;
-// };
 
 const mapDispatchToProps = {
   dataCatalog,

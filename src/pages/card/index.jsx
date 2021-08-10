@@ -18,10 +18,7 @@ class CardPage extends Component {
   };
 
   render() {
-    const { product: productItem, loading: loader } = this.props;
-    if (loader) {
-      return <Preloader />;
-    }
+    const { product: productItem } = this.props;
     return (
       <div className="card-content">
         <Header></Header>
@@ -49,7 +46,6 @@ class CardPage extends Component {
 }
 const mapStateToProps = (state) => ({
   product: state.product.product,
-  loading: state.app.loading,
 });
 
 const mapDispatchToProps = {

@@ -8,11 +8,13 @@
     width: 100%;
   }
   &-card {
-    max-width: 468px;
-    padding: 32px 16px;
-    border: 1px solid #d1d1d1;
-    border-radius: 12px;
+    max-width: 468px;    
     width: 100%;
+    &-content{
+      padding: 32px 16px;
+      border: 1px solid #d1d1d1;
+      border-radius: 12px;
+    }
   }
 }
 .custom-input {
@@ -234,6 +236,31 @@
     display: flex;
     flex-direction: column;
   }
+  &-operations{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    &-btn{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      border: 1px solid #D1D1D1;
+      padding: 4px;
+      background-color: transparent;
+      transition: background-color 0.4s ease-in-out;
+      &:hover{
+        background-color: #C8DEB3;
+      }
+      &.minus{
+        svg{
+          path:first-of-type {
+            display: none;
+          }
+        }
+      }
+    }
+  }
   &-remove {
     margin-top: 12px;
     display: flex;
@@ -331,10 +358,17 @@
       font-family: 'Poppins', sans-serif;;
       &-price {
         font-weight: 600;
+        font-family: 'Poppins', sans-serif;;
         font-size: 18px;
         line-height: 27px;
         color: #6a983c;
         white-space: nowrap;
+      }
+      &-count{
+        font-weight: 600;
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        color: #6a983c;
       }
       &-discount {
         color: #a9a9a9;
@@ -451,13 +485,22 @@
       color: #6a983c;
     }
   }
-  &-price {
-    font-size: 26px;
-    line-height: 39px;
-    font-weight: 600;
-    font-family: 'Poppins', sans-serif;;
-    color: #6a983c;
-    white-space: nowrap;
+  &-price{
+    display: flex;
+    flex-direction: column;
+    &-text {
+      font-size: 26px;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;;
+      color: #6a983c;
+      white-space: nowrap;
+      &.total{
+        font-size: 14px;
+        margin-left: auto;
+        color: #a9a9a9;
+        text-decoration-line: line-through;
+      }
+    }
   }
 }
 
@@ -484,12 +527,11 @@
   font-size: 24px;
   animation: anvil 0.5s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
   &-text{
-    margin-top: auto;
+    margin: auto 0;
   }
   .confirm{
     padding: 15px 50px;
     font-size: 18px;
-    margin-top: auto;
   }
   .closed{
     position: absolute;

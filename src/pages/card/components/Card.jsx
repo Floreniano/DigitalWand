@@ -115,8 +115,8 @@ export default function Card({
         </div>
         <div className="card__buy">
           <div className="card__buy-cost">
-            <span className="card__buy-cost-price">{price} USD</span>
-            {/* Скидка <span className="card__buy-cost-discount">48.56 USD</span> */}
+            <span className="card__buy-cost-price">{price} ₽</span>
+            {/* Скидка <span className="card__buy-cost-discount">48.56 ₽</span> */}
           </div>
           <div className="card__buy-btn">
             <div className="card__buy-btn-type">

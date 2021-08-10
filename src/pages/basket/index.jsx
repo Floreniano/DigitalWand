@@ -10,11 +10,12 @@ import Bitcoin from 'assets/img/Bitcoin_logo.svg';
 // libs
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { removeCartItem } from 'redux/actions/cart';
+import { removeCartItem, plusCartItem, minusCartItem, clearCart } from 'redux/actions/cart';
 
 // components
 import Header from 'components/Header';
 import Footer from 'components/Footer';
+import CustomPopup from 'components/CustomPopup';
 import Cart from './components/Cart';
 
 class BasketPage extends Component {
@@ -22,12 +23,28 @@ class BasketPage extends Component {
     this.props.removeCartItem(id);
   };
 
+  onPlusItem = (id) => {
+    this.props.plusCartItem(id);
+  };
+
+  onMinusItem = (id) => {
+    this.props.minusCartItem(id);
+  };
+
+  clearCart = () => {
+    this.props.clearCart();
+  };
+
   render() {
-    const { items, totalCount, subTotalPrice, tax, totalPrice, loading: loader } = this.props;
+    const {
+      items,
+      totalCount,
+      subTotalPrice,
+      tax,
+      totalPrice,
+      totalPriceWithDiscount,
+    } = this.props;
     const addedCards = Object.keys(items).map((key) => items[key].items[0]);
-    if (loader) {
-      return <Preloader />;
-    }
     return (
       <div className="basket">
         <Header></Header>
@@ -318,56 +335,72 @@ class BasketPage extends Component {
                 </form>
 
                 <div className="basket__inner-card">
-                  <div className="basket__card-title">
-                    <h2 className="basket__card-text">Order Summary</h2>
-                    <span className="basket__card-clue">
-                      Price can change depending on shipping method and taxes of your state.
-                    </span>
-                  </div>
-                  {addedCards.map((card) => (
-                    <Cart
-                      key={card.id}
-                      id={card.id}
-                      name={card.name}
-                      rating={card.rating}
-                      images={card.images}
-                      mainImage={card.mainImage}
-                      totalPrice={items[card.id].subTotalPrice}
-                      totalCount={items[card.id].items.length}
-                      onRemoveItem={this.onRemoveItem}
-                    />
-                  ))}
-                  <div className="cards__cost">
-                    <div className="cards__cost-subtotal">
-                      <span className="cards__cost-text">Subtotal</span>
-                      <span className="cards__cost-cost subtotal">{subTotalPrice} USD</span>
-                    </div>
-                    <div className="cards__cost-tax">
-                      <span className="cards__cost-text">Tax</span>
-                      <span className="cards__cost-cost tax">17% {tax} USD</span>
-                    </div>
-                    <div className="cards__cost-shipping">
-                      <span className="cards__cost-text">Shipping</span>
-                      <span className="cards__cost-cost shipping">0 USD</span>
-                    </div>
-                  </div>
-                  <div className="promo">
-                    <input
-                      type="text"
-                      className="promo-input"
-                      placeholder="Apply promo code"
-                    ></input>
-                    <button className="promo-apply">Apply now</button>
-                  </div>
-                  <div className="total__cost">
-                    <div className="total__cost-description">
-                      <h3 className="total__cost-description-title">Total Order</h3>
-                      <span className="total__cost-description-delivery">
-                        Guaranteed delivery day: June 12, 2020
+                  <div className="basket__inner-card-content">
+                    <div className="basket__card-title">
+                      <h2 className="basket__card-text">Order Summary</h2>
+                      <span className="basket__card-clue">
+                        Price can change depending on shipping method and taxes of your state.
                       </span>
                     </div>
-                    <span className="total__cost-price">{totalPrice} USD</span>
+                    {addedCards.map((card) => (
+                      <Cart
+                        key={card.id}
+                        id={card.id}
+                        name={card.name}
+                        rating={card.rating}
+                        images={card.images}
+                        mainImage={card.mainImage}
+                        totalPrice={items[card.id].subTotalPrice}
+                        totalCount={items[card.id].items.length}
+                        onRemoveItem={this.onRemoveItem}
+                        onPlus={this.onPlusItem}
+                        onMinus={this.onMinusItem}
+                      />
+                    ))}
+                    <div className="cards__cost">
+                      <div className="cards__cost-subtotal">
+                        <span className="cards__cost-text">Subtotal</span>
+                        <span className="cards__cost-cost subtotal">{subTotalPrice} ₽</span>
+                      </div>
+                      <div className="cards__cost-tax">
+                        <span className="cards__cost-text">Tax</span>
+                        <span className="cards__cost-cost tax">17% {tax} ₽</span>
+                      </div>
+                      <div className="cards__cost-shipping">
+                        <span className="cards__cost-text">Shipping</span>
+                        <span className="cards__cost-cost shipping">0 ₽</span>
+                      </div>
+                    </div>
+                    <div className="promo">
+                      <input
+                        type="text"
+                        className="promo-input"
+                        placeholder="Apply promo code"
+                      ></input>
+                      <button className="promo-apply">Apply now</button>
+                    </div>
+                    <div className="total__cost">
+                      <div className="total__cost-description">
+                        <h3 className="total__cost-description-title">Total Order</h3>
+                        <span className="total__cost-description-delivery">
+                          Guaranteed delivery day: June 12, 2020
+                        </span>
+                      </div>
+                      {totalPriceWithDiscount ? (
+                        <div className="total__cost-price">
+                          <span className="total__cost-price-text">{totalPriceWithDiscount} ₽</span>
+                          <span className="total__cost-price-text total">{totalPrice} ₽</span>
+                        </div>
+                      ) : (
+                        <span className="total__cost-price-text">{totalPrice} ₽</span>
+                      )}
+                    </div>
                   </div>
+                  <CustomPopup
+                    onclick={this.clearCart}
+                    trigger={<button className="btn clear">Очистить корзину</button>}
+                    text={'Вы действительно хотите очистить корзину?'}
+                  />
                 </div>
               </div>
             ) : (
@@ -391,11 +424,14 @@ const mapStateToProps = (state) => ({
   subTotalPrice: state.goods.subTotalPrice,
   tax: state.goods.tax,
   totalPrice: state.goods.totalPrice,
-  loading: state.app.loading,
+  totalPriceWithDiscount: state.goods.totalPriceWithDiscount,
 });
 
 const mapDispatchToProps = {
   removeCartItem,
+  plusCartItem,
+  minusCartItem,
+  clearCart,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BasketPage);
