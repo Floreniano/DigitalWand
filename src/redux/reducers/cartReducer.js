@@ -1,4 +1,10 @@
-import { ADD_TO_CART, MINUS_CART_ITEM, PLUS_CART_ITEM, REMOVE_CART_ITEM, CLEAR_CART } from 'redux/types';
+import {
+  ADD_TO_CART,
+  MINUS_CART_ITEM,
+  PLUS_CART_ITEM,
+  REMOVE_CART_ITEM,
+  CLEAR_CART,
+} from 'redux/types';
 
 const initialState = {
   items: [],
@@ -10,6 +16,14 @@ const initialState = {
 };
 
 const getSubTotal = (arr, factor) => arr.reduce((sum, obj) => obj.price * factor + sum, 0);
+
+const getTotalDiscount = (price) => {
+  let totalPriceWithDiscount = 0;
+  if (price > 1000) {
+    totalPriceWithDiscount = Math.round(price - price * 0.05);
+  }
+  return totalPriceWithDiscount;
+};
 
 const get = (obj, path) => {
   const [firstKey, ...keys] = path.split('.');
@@ -27,7 +41,6 @@ const goods = (state = initialState, action) => {
       const currentCardsItems = !state.items[action.payload.id]
         ? [action.payload]
         : [...state.items[action.payload.id].items, action.payload];
-      // Новые товары
       const newItems = {
         ...state.items,
         [action.payload.id]: {
@@ -40,10 +53,6 @@ const goods = (state = initialState, action) => {
       const subTotalPrice = getTotalSum(newItems, 'subTotalPrice');
       const tax = getTotalSum(newItems, 'tax');
       const totalPrice = subTotalPrice + tax;
-      let totalPriceWithDiscount = 0;
-      if (totalPrice > 1000) {
-        totalPriceWithDiscount = Math.round(totalPrice - totalPrice * 0.05);
-      }
       return {
         ...state,
         items: newItems,
@@ -51,7 +60,7 @@ const goods = (state = initialState, action) => {
         subTotalPrice,
         tax,
         totalPrice,
-        totalPriceWithDiscount,
+        totalPriceWithDiscount: getTotalDiscount(totalPrice),
       };
     }
     case REMOVE_CART_ITEM: {
@@ -62,6 +71,9 @@ const goods = (state = initialState, action) => {
       const currentTotalPrice = newItems[action.payload].subTotalPrice;
       const currentTotalTax = newItems[action.payload].tax;
       delete newItems[action.payload];
+      const subTotalPrice = getTotalSum(newItems, 'subTotalPrice');
+      const tax = getTotalSum(newItems, 'tax');
+      const totalPrice = subTotalPrice + tax;
       return {
         ...state,
         items: newItems,
@@ -69,6 +81,7 @@ const goods = (state = initialState, action) => {
         subTotalPrice: state.subTotalPrice - currentTotalPrice,
         tax: state.tax - currentTotalTax,
         totalPrice: state.totalPrice - currentTotalTax - currentTotalPrice,
+        totalPriceWithDiscount: getTotalDiscount(totalPrice),
       };
     }
     case PLUS_CART_ITEM: {
@@ -89,10 +102,6 @@ const goods = (state = initialState, action) => {
       const subTotalPrice = getTotalSum(newItems, 'subTotalPrice');
       const tax = getTotalSum(newItems, 'tax');
       const totalPrice = subTotalPrice + tax;
-      let totalPriceWithDiscount = 0;
-      if (totalPrice > 1000) {
-        totalPriceWithDiscount = Math.round(totalPrice - totalPrice * 0.05);
-      }
 
       return {
         ...state,
@@ -101,7 +110,7 @@ const goods = (state = initialState, action) => {
         subTotalPrice,
         tax,
         totalPrice,
-        totalPriceWithDiscount,
+        totalPriceWithDiscount: getTotalDiscount(totalPrice),
       };
     }
 
@@ -122,10 +131,10 @@ const goods = (state = initialState, action) => {
       const subTotalPrice = getTotalSum(newItems, 'subTotalPrice');
       const tax = getTotalSum(newItems, 'tax');
       const totalPrice = subTotalPrice + tax;
-      let totalPriceWithDiscount = 0;
-      if (totalPrice > 1000) {
-        totalPriceWithDiscount = Math.round(totalPrice - totalPrice * 0.05);
-      }
+      // let totalPriceWithDiscount = 0;
+      // if (totalPrice > 1000) {
+      //   totalPriceWithDiscount = Math.round(totalPrice - totalPrice * 0.05);
+      // }
 
       return {
         ...state,
@@ -134,7 +143,7 @@ const goods = (state = initialState, action) => {
         subTotalPrice,
         tax,
         totalPrice,
-        totalPriceWithDiscount,
+        totalPriceWithDiscount: getTotalDiscount(totalPrice),
       };
     }
     case CLEAR_CART:

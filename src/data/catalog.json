@@ -39,6 +39,44 @@
         }
       ],
       "mainImage": 4
+    },
+    {
+      "id": 3,
+      "name": "Product 2",
+      "short_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "full_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. S 25",
+      "rating": 3,
+      "price": 700,
+      "images": [
+        {
+          "id": 3,
+          "url": "https://picsum.photos/200"
+        },
+        {
+          "id": 4,
+          "url": "https://picsum.photos/200"
+        }
+      ],
+      "mainImage": 4
+    },
+    {
+      "id": 4,
+      "name": "Product 2",
+      "short_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "full_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. S 25",
+      "rating": 3,
+      "price": 800,
+      "images": [
+        {
+          "id": 3,
+          "url": "https://picsum.photos/200"
+        },
+        {
+          "id": 4,
+          "url": "https://picsum.photos/200"
+        }
+      ],
+      "mainImage": 4
     }
   ]
 }

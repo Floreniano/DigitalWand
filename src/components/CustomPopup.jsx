@@ -3,7 +3,7 @@ import Popup from 'reactjs-popup';
 // assets
 import closePicture from 'assets/img/close-popup.png';
 
-export default function CustomPopup({ onclick, trigger, text }) {
+export default function CustomPopup({ trigger, text, onclick }) {
   return (
     <Popup trigger={trigger} modal nested>
       {(close) => (
