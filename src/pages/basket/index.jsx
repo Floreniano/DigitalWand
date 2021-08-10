@@ -35,7 +35,7 @@ class BasketPage extends Component {
           <div className="content">
             {totalCount ? (
               <div className="basket__inner">
-                <div className="basket__inner-content">
+                <form className="basket__inner-content">
                   <div className="step">
                     <div className="basket__header">
                       <div className="basket__header-text">
@@ -48,6 +48,7 @@ class BasketPage extends Component {
                       <div className="personal__information-item">
                         <h2 className="title-for-input">First name</h2>
                         <input
+                          required
                           type="text"
                           className="custom-input"
                           placeholder="First name"
@@ -55,11 +56,17 @@ class BasketPage extends Component {
                       </div>
                       <div className="personal__information-item">
                         <h2 className="title-for-input">Last name</h2>
-                        <input type="text" className="custom-input" placeholder="Last name"></input>
+                        <input
+                          required
+                          type="text"
+                          className="custom-input"
+                          placeholder="Last name"
+                        ></input>
                       </div>
                       <div className="personal__information-item">
                         <h2 className="title-for-input">Email address</h2>
                         <input
+                          required
                           type="email"
                           className="custom-input"
                           placeholder="Email address"
@@ -68,6 +75,7 @@ class BasketPage extends Component {
                       <div className="personal__information-item">
                         <h2 className="title-for-input">Phone number</h2>
                         <input
+                          required
                           type="text"
                           className="custom-input"
                           placeholder="Phone number"
@@ -75,11 +83,17 @@ class BasketPage extends Component {
                       </div>
                       <div className="personal__information-item">
                         <h2 className="title-for-input">Address</h2>
-                        <input type="text" className="custom-input" placeholder="Address"></input>
+                        <input
+                          required
+                          type="text"
+                          className="custom-input"
+                          placeholder="Address"
+                        ></input>
                       </div>
                       <div className="personal__information-item">
                         <h2 className="title-for-input">Town / City</h2>
                         <input
+                          required
                           type="text"
                           className="custom-input"
                           placeholder="Town or city"
@@ -88,6 +102,7 @@ class BasketPage extends Component {
                       <div className="personal__information-item">
                         <h2 className="title-for-input">State / Country</h2>
                         <input
+                          required
                           type="text"
                           className="custom-input"
                           placeholder="State or country"
@@ -96,6 +111,7 @@ class BasketPage extends Component {
                       <div className="personal__information-item">
                         <h2 className="title-for-input">ZIP/Postal code</h2>
                         <input
+                          required
                           type="number"
                           className="custom-input"
                           placeholder="Postal code or ZIP"
@@ -181,6 +197,7 @@ class BasketPage extends Component {
                       </div>
                       <h2 className="title-for-input">Card number</h2>
                       <input
+                        required
                         className="custom-input card"
                         type="number"
                         placeholder="Card number"
@@ -189,6 +206,7 @@ class BasketPage extends Component {
                         <div className="card__info-input-holder">
                           <h2 className="title-for-input">Card holder</h2>
                           <input
+                            required
                             className="custom-input holder"
                             type="number"
                             placeholder="Card holder"
@@ -198,6 +216,7 @@ class BasketPage extends Component {
                           <div className="card__info-input-date">
                             <h2 className="title-for-input">Expiration date</h2>
                             <input
+                              required
                               className="custom-input"
                               type="number"
                               placeholder="MM/YY"
@@ -205,7 +224,12 @@ class BasketPage extends Component {
                           </div>
                           <div className="card__info-input-cvc">
                             <h2 className="title-for-input">CVC</h2>
-                            <input className="custom-input" type="number" placeholder="CVC"></input>
+                            <input
+                              required
+                              className="custom-input"
+                              type="number"
+                              placeholder="CVC"
+                            ></input>
                           </div>
                         </div>
                       </div>
@@ -266,22 +290,32 @@ class BasketPage extends Component {
                     </div>
                     <div className="agrees">
                       <div className="personal__information-item agree">
-                        <input type="checkbox" className="input-check" id="agree-1"></input>
+                        <input
+                          required
+                          type="checkbox"
+                          className="input-check"
+                          id="agree-1"
+                        ></input>
                         <label htmlFor="agree-1" className="label-check">
                           I agree with sending an Marketing and newsletter emails. No spam,
                           promissed!
                         </label>
                       </div>
                       <div className="personal__information-item agree">
-                        <input type="checkbox" className="input-check" id="agree-2"></input>
+                        <input
+                          required
+                          type="checkbox"
+                          className="input-check"
+                          id="agree-2"
+                        ></input>
                         <label htmlFor="agree-2" className="label-check">
                           I agree with our terms and conditions and privacy policy.
                         </label>
                       </div>
                     </div>
-                    <button className="btn complete">Complete order</button>
+                    <input className="btn complete" type="submit" value="Complete order"></input>
                   </div>
-                </div>
+                </form>
 
                 <div className="basket__inner-card">
                   <div className="basket__card-title">

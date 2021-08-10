@@ -13,7 +13,7 @@ function Cart({ id, name, rating, images, mainImage, totalPrice, totalCount, onR
         {images.map((image) => (image.id === mainImage ? (
             <img className="card__product-img" src={image.url} alt="product" key={image.id}></img>
         ) : null))}
-        <Popup trigger={<span className="card__product-remove">Remove</span>}>
+        <Popup trigger={<span className="card__product-remove">Remove</span>} modal nested>
           {(close) => (
             <div className="popup">
               <button
