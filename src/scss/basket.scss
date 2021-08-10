@@ -249,8 +249,11 @@
       padding: 4px;
       background-color: transparent;
       transition: background-color 0.4s ease-in-out;
-      &:hover{
+      &:hover:not(:disabled){
         background-color: #C8DEB3;
+      }
+      &:disabled{
+        background-color: #F5F5F5;
       }
       &.minus{
         svg{

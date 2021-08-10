@@ -35,18 +35,10 @@ class BasketPage extends Component {
     this.props.clearCart();
   };
 
-  // componentDidUpdate() {
-  //   const totalDiscount = Math.round(
-  //     this.props.totalPrice - this.props.totalPrice * 0.05,
-  //   );
-  //   console.log(totalDiscount);
-  // }
-
   render() {
     const {
       items, totalCount, subTotalPrice, tax, totalPrice, totalPriceWithDiscount } = this.props;
     const addedCards = Object.keys(items).map((key) => items[key].items[0]);
-    // console.log(this.props.totalPriceWithDiscount);
     return (
       <div className="basket">
         <Header></Header>

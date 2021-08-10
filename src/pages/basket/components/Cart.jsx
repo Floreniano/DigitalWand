@@ -36,7 +36,7 @@ function Cart({
           text={'Вы действительно хотите удалить выбранный товар?'}
         />
         <div className="card__product-operations">
-          <button className="card__product-operations-btn minus" onClick={handleMinusItem}>
+          <button className="card__product-operations-btn minus" disabled={totalCount === 1} onClick={handleMinusItem}>
             <svg
               width="10"
               height="10"

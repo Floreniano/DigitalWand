@@ -388,8 +388,12 @@
   transition: background-color 0.4s ease-in-out;
 }
 
-.card__product-operations-btn:hover {
+.card__product-operations-btn:hover:not(:disabled) {
   background-color: #C8DEB3;
+}
+
+.card__product-operations-btn:disabled {
+  background-color: #F5F5F5;
 }
 
 .card__product-operations-btn.minus svg path:first-of-type {
