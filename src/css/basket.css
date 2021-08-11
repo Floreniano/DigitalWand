@@ -360,46 +360,6 @@
           flex-direction: column;
 }
 
-.card__product-operations {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin-top: 10px;
-}
-
-.card__product-operations-btn {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  border-radius: 12px;
-  border: 1px solid #D1D1D1;
-  padding: 4px;
-  background-color: transparent;
-  -webkit-transition: background-color 0.4s ease-in-out;
-  transition: background-color 0.4s ease-in-out;
-}
-
-.card__product-operations-btn:hover:not(:disabled) {
-  background-color: #C8DEB3;
-}
-
-.card__product-operations-btn:disabled {
-  background-color: #F5F5F5;
-}
-
-.card__product-operations-btn.minus svg path:first-of-type {
-  display: none;
-}
-
 .card__product-remove {
   margin-top: 12px;
   display: -webkit-box;
@@ -528,7 +488,7 @@
           justify-content: space-between;
 }
 
-.card__product-cost-text {
+.card__product-cost-total {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -539,7 +499,7 @@
   font-family: 'Poppins', sans-serif;
 }
 
-.card__product-cost-text-price {
+.card__product-cost-total-price {
   font-weight: 600;
   font-family: 'Poppins', sans-serif;
   font-size: 18px;
@@ -548,14 +508,27 @@
   white-space: nowrap;
 }
 
-.card__product-cost-text-count {
+.card__product-cost-total-count {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-weight: 600;
   font-family: 'Poppins', sans-serif;
   font-size: 12px;
   color: #6a983c;
 }
 
-.card__product-cost-text-discount {
+.card__product-cost-total-count-text {
+  width: 32px;
+  text-align: center;
+  background-color: transparent;
+  border: none;
+}
+
+.card__product-cost-total-discount {
   color: #a9a9a9;
   -webkit-text-decoration-line: line-through;
           text-decoration-line: line-through;

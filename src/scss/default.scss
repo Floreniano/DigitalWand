@@ -311,13 +311,37 @@ input[type='number'] {
     background-color: #46760a;
     transition: all 0.5s ease-in-out;
   }
-  &-back{
+  &-back {
     padding: 10px;
     margin-top: 20px;
   }
-  &.clear{
+  &.clear {
     padding: 10px;
     margin: 15px 0 0 auto;
+  }
+  &-operation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    border: 1px solid #d1d1d1;
+    padding: 4px;
+    opacity: 1;
+    background-color: transparent;
+    transition: all 0.4s ease-in-out;
+    &:hover:not(:disabled) {
+      background-color: #c8deb3;
+    }
+    &:disabled {
+      background-color: #f5f5f5;
+    }
+    &.minus {
+      svg {
+        path:first-of-type {
+          display: none;
+        }
+      }
+    }
   }
 }
 
