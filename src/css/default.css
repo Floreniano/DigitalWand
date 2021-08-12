@@ -43,6 +43,11 @@ input[type='number'] {
   line-height: 48px;
 }
 
+.title.authorization {
+  position: absolute;
+  top: 25px;
+}
+
 .content.bg {
   background-color: #f9f9f9;
 }
@@ -434,7 +439,7 @@ input[type='number'] {
   transition: all 0.5s ease-in-out;
 }
 
-.btn:hover {
+.btn:hover:not(:disabled) {
   background-color: #46760a;
   -webkit-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
@@ -448,6 +453,16 @@ input[type='number'] {
 .btn.clear {
   padding: 10px;
   margin: 15px 0 0 auto;
+}
+
+.btn.authorization {
+  padding: 15px 55px;
+}
+
+.btn.authorization:disabled {
+  background-color: #d1d1d1;
+  border: 2px solid #d1d1d1;
+  color: #151515;
 }
 
 .btn-operation {
@@ -607,6 +622,43 @@ input[type='number'] {
 .input-check,
 .input-radio {
   display: none;
+}
+
+.custom-input {
+  position: relative;
+  width: 100%;
+  padding: 11px 16px 12px 21px;
+  border-radius: 12px;
+  border: 1px solid #d1d1d1;
+  font-size: 14px;
+  line-height: 19px;
+  background-color: #f9f9f9;
+}
+
+.custom-input::-webkit-input-placeholder {
+  color: #a9a9a9;
+}
+
+.custom-input:-ms-input-placeholder {
+  color: #a9a9a9;
+}
+
+.custom-input::-ms-input-placeholder {
+  color: #a9a9a9;
+}
+
+.custom-input::placeholder {
+  color: #a9a9a9;
+}
+
+.custom-input.card {
+  margin-bottom: 32px;
+  max-height: 42px;
+}
+
+.custom-input.authorization {
+  width: 300px;
+  margin: 20px;
 }
 
 .label-check {

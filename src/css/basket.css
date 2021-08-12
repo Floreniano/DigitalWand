@@ -25,33 +25,6 @@
   border-radius: 12px;
 }
 
-.custom-input {
-  position: relative;
-  width: 100%;
-  padding: 11px 16px 12px 21px;
-  border-radius: 12px;
-  border: 1px solid #d1d1d1;
-  font-size: 14px;
-  line-height: 19px;
-  background-color: #f9f9f9;
-}
-
-.custom-input::-webkit-input-placeholder {
-  color: #a9a9a9;
-}
-
-.custom-input:-ms-input-placeholder {
-  color: #a9a9a9;
-}
-
-.custom-input::-ms-input-placeholder {
-  color: #a9a9a9;
-}
-
-.custom-input::placeholder {
-  color: #a9a9a9;
-}
-
 .title-for-input {
   line-height: 18px;
   font-weight: 600;
@@ -179,11 +152,6 @@
 
 .payment_method {
   margin-top: 16px;
-}
-
-.custom-input.card {
-  margin-bottom: 32px;
-  max-height: 42px;
 }
 
 .card {

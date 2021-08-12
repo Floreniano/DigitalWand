@@ -9,7 +9,6 @@ import Bitcoin from 'assets/img/Bitcoin_logo.svg';
 
 // libs
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { removeCartItem, plusCartItem, minusCartItem, clearCart } from 'redux/actions/cart';
 
 // components
@@ -19,6 +18,17 @@ import CustomPopup from 'components/CustomPopup';
 import Cart from './components/Cart';
 
 class BasketPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      firstName: 'Александр',
+      lastName: 'Арьков',
+      phone: '8 (999) 999-99-99',
+      address: '',
+      email: '',
+    };
+  }
+
   onRemoveItem = (id) => {
     this.props.removeCartItem(id);
   };
@@ -35,9 +45,24 @@ class BasketPage extends Component {
     this.props.clearCart();
   };
 
+  goBack() {
+    window.history.go(-1);
+  }
+
   render() {
     const {
-      items, totalCount, subTotalPrice, tax, totalPrice, totalPriceWithDiscount } = this.props;
+      firstName,
+      lastName,
+      phone,
+      address,
+      email } = this.state;
+    const {
+      items,
+      totalCount,
+      subTotalPrice,
+      tax,
+      totalPrice,
+      totalPriceWithDiscount } = this.props;
     const addedCards = Object.keys(items).map((key) => items[key].items[0]);
     return (
       <div className="basket">
@@ -61,6 +86,7 @@ class BasketPage extends Component {
                         <input
                           required
                           type="text"
+                          value={firstName}
                           className="custom-input"
                           placeholder="First name"
                         ></input>
@@ -70,6 +96,7 @@ class BasketPage extends Component {
                         <input
                           required
                           type="text"
+                          value={lastName}
                           className="custom-input"
                           placeholder="Last name"
                         ></input>
@@ -79,6 +106,7 @@ class BasketPage extends Component {
                         <input
                           required
                           type="email"
+                          value={email}
                           className="custom-input"
                           placeholder="Email address"
                         ></input>
@@ -88,6 +116,7 @@ class BasketPage extends Component {
                         <input
                           required
                           type="text"
+                          value={phone}
                           className="custom-input"
                           placeholder="Phone number"
                         ></input>
@@ -97,6 +126,7 @@ class BasketPage extends Component {
                         <input
                           required
                           type="text"
+                          value={address}
                           className="custom-input"
                           placeholder="Address"
                         ></input>
@@ -394,15 +424,16 @@ class BasketPage extends Component {
                     onclick={this.clearCart}
                     trigger={<button className="btn clear">Очистить корзину</button>}
                     text={'Вы действительно хотите очистить корзину?'}
+                    textButton={'Подтвердить'}
                   />
                 </div>
               </div>
             ) : (
               <div className="basket__none">
                 <h1>Корзина пустая</h1>
-                <Link className="btn btn-back" to="/">
+                <button className="btn btn-back" onClick={this.goBack}>
                   Вернуться назад
-                </Link>
+                </button>
               </div>
             )}
           </div>

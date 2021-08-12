@@ -1,6 +1,7 @@
 // data
 export const DATA_CATALOG = 'DATA_CATALOG';
 export const DATA_PRODUCT = 'DATA_PRODUCT';
+export const DATA_USERS = 'DATA_USERS';
 
 // cart
 export const ADD_TO_CART = 'ADD_TO_CART';

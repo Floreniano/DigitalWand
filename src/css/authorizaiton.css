@@ -1,0 +1,43 @@
+.form {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  max-width: 500px;
+  margin: 50px auto 0 auto;
+  border-radius: 12px;
+  padding: 100px 0;
+  background-color: #ebebeb;
+}
+
+.form.logout {
+  padding: 100px 0 50px 0;
+}
+
+.valid {
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  background: rgba(255, 234, 228, 0.35);
+  border: 1px solid rgba(237, 126, 126, 0.37);
+  padding: 15px 14px 15px 47px;
+  background-image: url(../assets/img/warning.png);
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  display: inline;
+}
+
+.valid:empty {
+  display: none;
+}
+/*# sourceMappingURL=authorizaiton.css.map */

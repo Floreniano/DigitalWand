@@ -34,6 +34,7 @@ function Cart({
           onclick={handleRemoveClick}
           trigger={<span className="card__product-remove">Remove</span>}
           text={'Вы действительно хотите удалить выбранный товар?'}
+          textButton={'Подтвердить'}
         />
       </div>
       <div className="card__product-info">
@@ -79,13 +80,6 @@ function Cart({
                   />
                 </svg>
               </button>
-              {/* <input
-                type="text"
-                className="card__product-cost-total-count-text"
-                maxLength="2"
-                defaultValue={totalCount}
-                disabled
-              ></input> */}
               <span className="card__product-cost-total-count-text">{totalCount}</span>
               <button className="btn-operation plus" onClick={handlePlusItem}>
                 <svg

@@ -9,11 +9,12 @@ import 'css/default.css';
 import 'css/catalog.css';
 import 'css/basket.css';
 import 'css/card.css';
+import 'css/authorizaiton.css';
 
 import { useRoutes } from './routes';
 
 function App() {
-  const routes = useRoutes(1);
+  const routes = useRoutes();
   return (
     <Router>
       <div className='container'>{routes}</div>

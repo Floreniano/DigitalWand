@@ -22,6 +22,9 @@ const getTotalDiscount = (price) => {
   if (price > 1000) {
     totalPriceWithDiscount = Math.round(price - price * 0.05);
   }
+  if (localStorage.getItem('user')) {
+    totalPriceWithDiscount = Math.round(price - price * 0.1);
+  }
   return totalPriceWithDiscount;
 };
 
@@ -146,8 +149,9 @@ const goods = (state = initialState, action) => {
         totalPriceWithDiscount: getTotalDiscount(totalPrice),
       };
     }
-    case CLEAR_CART:
+    case CLEAR_CART: {
       return { totalPrice: 0, totalCount: 0, items: {} };
+    }
     default:
       return state;
   }

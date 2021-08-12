@@ -3,7 +3,7 @@ import Popup from 'reactjs-popup';
 // assets
 import closePicture from 'assets/img/close-popup.png';
 
-export default function CustomPopup({ trigger, text, onclick }) {
+export default function CustomPopup({ trigger, text, textButton, onclick }) {
   return (
     <Popup trigger={trigger} modal nested>
       {(close) => (
@@ -18,7 +18,7 @@ export default function CustomPopup({ trigger, text, onclick }) {
           </button>
           <span className="popup-text">{text}</span>
           <button className="btn confirm" onClick={onclick}>
-            Подтвердить
+            {textButton}
           </button>
         </div>
       )}
