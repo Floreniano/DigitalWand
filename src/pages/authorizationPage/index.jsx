@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-
 // components
 import Header from 'components/Header';
 
 // redux
 import { connect } from 'react-redux';
 import dataUsers from 'redux/actions/users';
+import { recalculationPrice } from 'redux/actions/cart';
 
 class AuthorizationPage extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class AuthorizationPage extends Component {
       password: 'qwerty',
       error: '',
     };
-    this.authorization = this.authorization.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   componentDidMount() {
@@ -40,6 +40,7 @@ class AuthorizationPage extends Component {
       counter = 1;
       if (user.password === password && user.phone === phone) {
         localStorage.setItem('user', JSON.stringify(user));
+        this.props.recalculationPrice();
         window.history.back(-1);
         counter = 0;
         break;
@@ -54,6 +55,7 @@ class AuthorizationPage extends Component {
 
   logout() {
     localStorage.removeItem('user');
+    this.props.recalculationPrice();
     window.location = '/authorization';
   }
 
@@ -68,7 +70,7 @@ class AuthorizationPage extends Component {
           <div className="form logout">
             <h1 className="title authorization">Вы авторизованы</h1>
             <button
-              className="btn authorization"
+              className="btn authorization exit"
               onClick={this.logout}
               id="btnConfirm"
             >
@@ -118,6 +120,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   dataUsers,
+  recalculationPrice,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AuthorizationPage);

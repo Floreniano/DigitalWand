@@ -4,6 +4,7 @@ import {
   PLUS_CART_ITEM,
   REMOVE_CART_ITEM,
   CLEAR_CART,
+  RECALCULATION_PRICE,
 } from 'redux/types';
 
 const initialState = {
@@ -134,10 +135,6 @@ const goods = (state = initialState, action) => {
       const subTotalPrice = getTotalSum(newItems, 'subTotalPrice');
       const tax = getTotalSum(newItems, 'tax');
       const totalPrice = subTotalPrice + tax;
-      // let totalPriceWithDiscount = 0;
-      // if (totalPrice > 1000) {
-      //   totalPriceWithDiscount = Math.round(totalPrice - totalPrice * 0.05);
-      // }
 
       return {
         ...state,
@@ -151,6 +148,9 @@ const goods = (state = initialState, action) => {
     }
     case CLEAR_CART: {
       return { totalPrice: 0, totalCount: 0, items: {} };
+    }
+    case RECALCULATION_PRICE: {
+      return { ...state, totalPriceWithDiscount: getTotalDiscount(state.totalPrice) };
     }
     default:
       return state;
