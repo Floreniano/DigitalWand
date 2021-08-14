@@ -459,6 +459,19 @@ input[type='number'] {
   padding: 15px 55px;
 }
 
+.btn.authorization .exit {
+  position: relative;
+}
+
+.btn.authorization .exit::before {
+  position: absolute;
+  content: '123';
+  width: 20px;
+  left: 0;
+  background-image: url(../assets/img/exit.png);
+  background-repeat: no-repeat;
+}
+
 .btn.authorization:disabled {
   background-color: #d1d1d1;
   border: 2px solid #d1d1d1;

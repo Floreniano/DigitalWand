@@ -21,9 +21,9 @@ class BasketPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: 'Александр',
-      lastName: 'Арьков',
-      phone: '8 (999) 999-99-99',
+      firstName: '',
+      lastName: '',
+      phone: '',
       address: '',
       email: '',
     };
@@ -47,6 +47,16 @@ class BasketPage extends Component {
 
   goBack() {
     window.history.go(-1);
+  }
+
+  componentDidMount() {
+    const dataUser = localStorage.getItem('user');
+    const dataParse = JSON.parse(dataUser);
+    if (dataUser) {
+      this.setState({
+        phone: dataParse.phone,
+      });
+    }
   }
 
   render() {
@@ -86,7 +96,7 @@ class BasketPage extends Component {
                         <input
                           required
                           type="text"
-                          value={firstName}
+                          defaultValue={firstName}
                           className="custom-input"
                           placeholder="First name"
                         ></input>
@@ -96,7 +106,7 @@ class BasketPage extends Component {
                         <input
                           required
                           type="text"
-                          value={lastName}
+                          defaultValue={lastName}
                           className="custom-input"
                           placeholder="Last name"
                         ></input>
@@ -106,7 +116,7 @@ class BasketPage extends Component {
                         <input
                           required
                           type="email"
-                          value={email}
+                          defaultValue={email}
                           className="custom-input"
                           placeholder="Email address"
                         ></input>
@@ -116,7 +126,7 @@ class BasketPage extends Component {
                         <input
                           required
                           type="text"
-                          value={phone}
+                          defaultValue={phone}
                           className="custom-input"
                           placeholder="Phone number"
                         ></input>
@@ -126,7 +136,7 @@ class BasketPage extends Component {
                         <input
                           required
                           type="text"
-                          value={address}
+                          defaultValue={address}
                           className="custom-input"
                           placeholder="Address"
                         ></input>

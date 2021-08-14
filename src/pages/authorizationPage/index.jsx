@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import InputMask from 'react-input-mask';
 // components
 import Header from 'components/Header';
 
@@ -11,8 +12,8 @@ class AuthorizationPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      phone: '79999999999',
-      password: 'qwerty',
+      phone: '',
+      password: '',
       error: '',
     };
     this.logout = this.logout.bind(this);
@@ -22,12 +23,8 @@ class AuthorizationPage extends Component {
     this.props.dataUsers();
   }
 
-  handlePhoneChange = (e) => {
-    this.setState({ phone: e.target.value });
-  };
-
-  handlePasswordChange = (e) => {
-    this.setState({ password: e.target.value });
+  handleInput = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   authorization(phone, password) {
@@ -41,7 +38,7 @@ class AuthorizationPage extends Component {
       if (user.password === password && user.phone === phone) {
         localStorage.setItem('user', JSON.stringify(user));
         this.props.recalculationPrice();
-        window.history.back(-1);
+        window.location = '/authorization';
         counter = 0;
         break;
       }
@@ -60,44 +57,45 @@ class AuthorizationPage extends Component {
   }
 
   render() {
-    const { error, phone, password } = this.state;
+    const { phone, password, error } = this.state;
     const enabled = phone.length > 0 && password.length > 0;
     return (
       <div className="authorization-content">
         <Header />
-
         {localStorage.getItem('user') ? (
           <div className="form logout">
             <h1 className="title authorization">Вы авторизованы</h1>
-            <button
-              className="btn authorization exit"
-              onClick={this.logout}
-              id="btnConfirm"
-            >
+            <button className="btn authorization exit" onClick={this.logout} id="btnConfirm">
               Выйти
             </button>
           </div>
         ) : (
           <div className="form">
             <h1 className="title authorization">Авторизация</h1>
-            <span className="valid" id="valid">
-              {error}
-            </span>
+            <span className="valid">{error}</span>
+            {/* <InputMask
+            className="custom-input authorization"
+             name="phone"
+              mask="8 (999) 999 - 99 - 99"
+              maskChar={null}
+              value={this.state.phone}
+              onChange={this.handleInput}
+            ></InputMask> */}
             <input
               type="tel"
               className="custom-input authorization"
-              id="phone"
+              name="phone"
               placeholder="Введите телефон"
-              value={this.state.phone}
-              onChange={this.handlePhoneChange}
+              value={phone}
+              onChange={this.handleInput}
             ></input>
             <input
               type="password"
               className="custom-input authorization"
               placeholder="Введите пароль"
-              id="password"
-              value={this.state.password}
-              onChange={this.handlePasswordChange}
+              name="password"
+              value={password}
+              onChange={this.handleInput}
             ></input>
             <button
               className="btn authorization"
