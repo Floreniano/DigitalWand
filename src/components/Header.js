@@ -124,7 +124,7 @@ export default function Header() {
           <ul className="cabinet__list">
             <li className="cabinet__list-item">
               <Link className="cabinet__list-link" to="/authorization">
-                <img className="cabinet__list-img cabinet" src={cabinet} alt="cabinet"></img>
+                <img className="cabinet__list-img" src={cabinet} alt="cabinet"></img>
               </Link>
             </li>
             <li className="cabinet__list-item">

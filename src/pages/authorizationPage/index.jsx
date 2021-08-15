@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 // components
 import Header from 'components/Header';
 
+// assest
+import photoImg from 'assets/img/user-cabinet.png';
+
 // redux
 import { connect } from 'react-redux';
 import dataUsers from 'redux/actions/users';
@@ -63,17 +66,70 @@ class AuthorizationPage extends Component {
       <div className="authorization-content">
         <Header />
         {localStorage.getItem('user') ? (
-          <div className="form logout">
-            <h1 className="title authorization">Вы авторизованы</h1>
-            <button className="btn authorization exit" onClick={this.logout} id="btnConfirm">
-              Выйти
-            </button>
+          <div className="content bg bg-cabinet">
+            <div className="cabinet">
+              <div className="cabinet__info">
+                <div className="cabinet__info-item info">
+                  <div className="cabinet__info-item-top">
+                    <div className="cabinet__info-item-photo">
+                      <img className="cabinet__info-item-photo-img" src={photoImg} alt="photo" />
+                    </div>
+                    <button
+                      className="btn exit top"
+                      onClick={this.logout}
+                      id="btnConfirm"
+                    >
+                      Выйти
+                    </button>
+                  </div>
+                  <div className="cabinet__info-item-info">
+                    <h2 className="title-for-input">First name</h2>
+                    <input type="text" className="custom-input" placeholder="First name"></input>
+                  </div>
+                  <div className="cabinet__info-item-info">
+                    <h2 className="title-for-input">Phone number</h2>
+                    <input type="text" className="custom-input" placeholder="Phone number"></input>
+                  </div>
+                  <div className="cabinet__info-item-info">
+                    <h2 className="title-for-input">Email address</h2>
+                    <input
+                      type="email"
+                      className="custom-input"
+                      placeholder="Email address"
+                    ></input>
+                  </div>
+                  <div className="cabinet__info-item-info">
+                    <h2 className="title-for-input">Address</h2>
+                    <input type="text" className="custom-input" placeholder="Address"></input>
+                  </div>
+                  <div className="cabinet-btns">
+                    <button className="btn cabinet-confirm">Подтвердить</button>
+                    <button
+                      className="btn exit bottom"
+                      onClick={this.logout}
+                      id="btnConfirm"
+                    >
+                      Выйти
+                    </button>
+                  </div>
+                </div>
+                <div className="cabinet__info-item">
+                  <div className="cabinet__info-item-discount">
+                    <span>10%</span>
+                  </div>
+                  <div className="cabinet__info-item-description">
+                    <h2 className="title">Скидка</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         ) : (
-          <div className="form">
-            <h1 className="title authorization">Авторизация</h1>
-            <span className="valid">{error}</span>
-            {/* <InputMask
+          <div className="content bg bg-cabinet">
+            <div className="cabinet authorization">
+              <h1 className="title authorization">Авторизация</h1>
+              <span className="error">{error}</span>
+              {/* <InputMask
             className="custom-input authorization"
              name="phone"
               mask="8 (999) 999 - 99 - 99"
@@ -81,30 +137,31 @@ class AuthorizationPage extends Component {
               value={this.state.phone}
               onChange={this.handleInput}
             ></InputMask> */}
-            <input
-              type="tel"
-              className="custom-input authorization"
-              name="phone"
-              placeholder="Введите телефон"
-              value={phone}
-              onChange={this.handleInput}
-            ></input>
-            <input
-              type="password"
-              className="custom-input authorization"
-              placeholder="Введите пароль"
-              name="password"
-              value={password}
-              onChange={this.handleInput}
-            ></input>
-            <button
-              className="btn authorization"
-              onClick={() => this.authorization(phone, password)}
-              id="btnConfirm"
-              disabled={!enabled}
-            >
-              Войти
-            </button>
+              <input
+                type="tel"
+                className="custom-input authorization"
+                name="phone"
+                placeholder="Введите телефон"
+                value={phone}
+                onChange={this.handleInput}
+              ></input>
+              <input
+                type="password"
+                className="custom-input authorization"
+                placeholder="Введите пароль"
+                name="password"
+                value={password}
+                onChange={this.handleInput}
+              ></input>
+              <button
+                className="btn authorization"
+                onClick={() => this.authorization(phone, password)}
+                id="btnConfirm"
+                disabled={!enabled}
+              >
+                Войти
+              </button>
+            </div>
           </div>
         )}
       </div>
