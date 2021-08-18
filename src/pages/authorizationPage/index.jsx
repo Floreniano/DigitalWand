@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import InputMask from 'react-input-mask';
+import InputMask from 'react-input-mask';
 // components
 import Header from 'components/Header';
 
@@ -34,11 +34,12 @@ class AuthorizationPage extends Component {
     const { users } = this.props;
     const errorOutput = (errString) => this.setState({ error: errString });
     let counter = 0;
+    const number = phone.replace(/\D+/g, '').substr(1);
 
     for (let i = 0; i < users.length; i++) {
       const user = users[i];
       counter = 1;
-      if (user.password === password && user.phone === phone) {
+      if (user.password === password && user.phone.substr(1) === number) {
         localStorage.setItem('user', JSON.stringify(user));
         this.props.recalculationPrice();
         window.location = '/authorization';
@@ -74,11 +75,7 @@ class AuthorizationPage extends Component {
                     <div className="cabinet__info-item-photo">
                       <img className="cabinet__info-item-photo-img" src={photoImg} alt="photo" />
                     </div>
-                    <button
-                      className="btn exit top"
-                      onClick={this.logout}
-                      id="btnConfirm"
-                    >
+                    <button className="btn exit top" onClick={this.logout} id="btnConfirm">
                       Выйти
                     </button>
                   </div>
@@ -104,11 +101,7 @@ class AuthorizationPage extends Component {
                   </div>
                   <div className="cabinet-btns">
                     <button className="btn cabinet-confirm">Подтвердить</button>
-                    <button
-                      className="btn exit bottom"
-                      onClick={this.logout}
-                      id="btnConfirm"
-                    >
+                    <button className="btn exit bottom" onClick={this.logout} id="btnConfirm">
                       Выйти
                     </button>
                   </div>
@@ -129,22 +122,15 @@ class AuthorizationPage extends Component {
             <div className="cabinet authorization">
               <h1 className="title authorization">Авторизация</h1>
               <span className="error">{error}</span>
-              {/* <InputMask
-            className="custom-input authorization"
-             name="phone"
-              mask="8 (999) 999 - 99 - 99"
-              maskChar={null}
-              value={this.state.phone}
-              onChange={this.handleInput}
-            ></InputMask> */}
-              <input
-                type="tel"
+              <InputMask
                 className="custom-input authorization"
                 name="phone"
-                placeholder="Введите телефон"
+                mask="8 (999) 999 - 99 - 99"
+                placeholder='Введите телефон'
+                maskChar={'_'}
                 value={phone}
                 onChange={this.handleInput}
-              ></input>
+              ></InputMask>
               <input
                 type="password"
                 className="custom-input authorization"

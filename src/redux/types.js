@@ -10,3 +10,7 @@ export const PLUS_CART_ITEM = 'PLUS_CART_ITEM';
 export const MINUS_CART_ITEM = 'MINUS_CART_ITEM';
 export const CLEAR_CART = 'CLEAR_CART';
 export const RECALCULATION_PRICE = 'RECALCULATION_PRICE';
+
+// loader
+export const SHOW_LOADER = 'SHOW_LOADER';
+export const HIDE_LOADER = 'HIDE_LOADER';
