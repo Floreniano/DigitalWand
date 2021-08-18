@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import InputMask from 'react-input-mask';
 // components
 import Header from 'components/Header';
+import { sendRequest } from 'api/api';
 
 // assest
 import photoImg from 'assets/img/user-cabinet.png';
@@ -15,8 +16,8 @@ class AuthorizationPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      phone: '',
-      password: '',
+      phone: '999999999',
+      password: 'qwerty',
       error: '',
     };
     this.logout = this.logout.bind(this);
@@ -24,6 +25,14 @@ class AuthorizationPage extends Component {
 
   componentDidMount() {
     this.props.dataUsers();
+    const body = {
+      phone: '999312319',
+      password: 'qwert',
+    };
+    sendRequest('POST', 'https://jsonplaceholder.typicode.com/users', body)
+      .then((data) => console.log(data));
+    sendRequest('GET', 'https://jsonplaceholder.typicode.com/users')
+      .then((data) => console.log(data));
   }
 
   handleInput = (e) => {
@@ -42,7 +51,6 @@ class AuthorizationPage extends Component {
       if (user.password === password && user.phone.substr(1) === number) {
         localStorage.setItem('user', JSON.stringify(user));
         this.props.recalculationPrice();
-        window.location = '/authorization';
         counter = 0;
         break;
       }
@@ -126,7 +134,7 @@ class AuthorizationPage extends Component {
                 className="custom-input authorization"
                 name="phone"
                 mask="8 (999) 999 - 99 - 99"
-                placeholder='Введите телефон'
+                placeholder="Введите телефон"
                 maskChar={'_'}
                 value={phone}
                 onChange={this.handleInput}
