@@ -1,11 +1,10 @@
 [
-    {
-      "phone": "79999999999",
-      "password": "qwerty"
-    },
-    {
-      "phone": "79999999998",
-      "password": "qwert"
-    }
-  ]
-  
+  {
+    "phone": "79999999999",
+    "password": "qwerty"
+  },
+  {
+    "phone": "79999999998",
+    "password": "qwert"
+  }
+]

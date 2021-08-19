@@ -25,12 +25,13 @@ class AuthorizationPage extends Component {
 
   componentDidMount() {
     this.props.dataUsers();
-    const body = {
-      phone: '999312319',
-      password: 'qwert',
-    };
-    sendRequest('POST', 'https://jsonplaceholder.typicode.com/users', body).then((data) => console.log(data));
-    sendRequest('GET', 'https://jsonplaceholder.typicode.com/users').then((data) => console.log(data));
+    // const body = {
+    //   phone: '9993123121319',
+    //   password: 'qwert',
+    // };
+    // sendRequest('POST', 'http://localhost:3000/posts', body).then((data) => console.log(data));
+    // sendRequest('GET', 'http://localhost:3000/posts').then((data) => console.log(data));
+    // fetch('http://localhost:3000/posts').then((data) => data.json()).then((data) => console.log(data));
   }
 
   handleInput = (e) => {
@@ -48,6 +49,8 @@ class AuthorizationPage extends Component {
       counter = 1;
       if (user.password === password && user.phone.substr(1) === number) {
         localStorage.setItem('user', JSON.stringify(user));
+        /* eslint-disable no-console */
+        sendRequest('POST', 'http://localhost:3000/posts', user).catch((error) => console.warn(error.message));
         this.props.recalculationPrice();
         counter = 0;
         break;
