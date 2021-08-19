@@ -110,6 +110,9 @@ export default function Header() {
           <Link className="logo-link" to="/catalog">
             <img className="logo" src={logo} alt="logo" />
           </Link>
+          <Link className="cabinet__list-link adaptive" to="/authorization">
+                <img className="cabinet__list-img" src={cabinet} alt="cabinet"></img>
+              </Link>
           <div className="search">
             <div className="search-categories">All categories</div>
             <div className="search__input">

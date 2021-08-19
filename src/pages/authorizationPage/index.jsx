@@ -29,10 +29,8 @@ class AuthorizationPage extends Component {
       phone: '999312319',
       password: 'qwert',
     };
-    sendRequest('POST', 'https://jsonplaceholder.typicode.com/users', body)
-      .then((data) => console.log(data));
-    sendRequest('GET', 'https://jsonplaceholder.typicode.com/users')
-      .then((data) => console.log(data));
+    sendRequest('POST', 'https://jsonplaceholder.typicode.com/users', body).then((data) => console.log(data));
+    sendRequest('GET', 'https://jsonplaceholder.typicode.com/users').then((data) => console.log(data));
   }
 
   handleInput = (e) => {

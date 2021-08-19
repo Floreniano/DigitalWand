@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import InputMask from 'react-input-mask';
 // assets
 import FedEx from 'assets/img/price-icon-FedEx.svg';
 import DHL from 'assets/img/price-icon-DHL.svg';
@@ -60,19 +60,9 @@ class BasketPage extends Component {
   }
 
   render() {
+    const { firstName, lastName, phone, address, email } = this.state;
     const {
-      firstName,
-      lastName,
-      phone,
-      address,
-      email } = this.state;
-    const {
-      items,
-      totalCount,
-      subTotalPrice,
-      tax,
-      totalPrice,
-      totalPriceWithDiscount } = this.props;
+      items, totalCount, subTotalPrice, tax, totalPrice, totalPriceWithDiscount } = this.props;
     const addedCards = Object.keys(items).map((key) => items[key].items[0]);
     return (
       <div className="basket">
@@ -123,13 +113,15 @@ class BasketPage extends Component {
                       </div>
                       <div className="personal__information-item">
                         <h2 className="title-for-input">Phone number</h2>
-                        <input
+                        <InputMask
                           required
-                          type="text"
-                          defaultValue={phone}
                           className="custom-input"
+                          name="phone"
+                          mask="8 (999) 999 - 99 - 99"
                           placeholder="Phone number"
-                        ></input>
+                          maskChar={'_'}
+                          value={phone.substr(1)}
+                        ></InputMask>
                       </div>
                       <div className="personal__information-item">
                         <h2 className="title-for-input">Address</h2>
