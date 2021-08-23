@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import InputMask from 'react-input-mask';
 // components
 import Header from 'components/Header';
-import { sendRequest } from 'api/api';
+import { request } from 'api/api.js';
 
 // assest
 import photoImg from 'assets/img/user-cabinet.png';
@@ -23,15 +23,10 @@ class AuthorizationPage extends Component {
     this.logout = this.logout.bind(this);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.props.dataUsers();
-    // const body = {
-    //   phone: '9993123121319',
-    //   password: 'qwert',
-    // };
-    // sendRequest('POST', 'http://localhost:3000/posts', body).then((data) => console.log(data));
-    // sendRequest('GET', 'http://localhost:3000/posts').then((data) => console.log(data));
-    // fetch('http://localhost:3000/posts').then((data) => data.json()).then((data) => console.log(data));
+    /* eslint-disable no-console */
+    console.log(await request('/api/catalog'));
   }
 
   handleInput = (e) => {
@@ -50,7 +45,7 @@ class AuthorizationPage extends Component {
       if (user.password === password && user.phone.substr(1) === number) {
         localStorage.setItem('user', JSON.stringify(user));
         /* eslint-disable no-console */
-        sendRequest('POST', 'http://localhost:3000/posts', user).catch((error) => console.warn(error.message));
+        request('/api/catalog', 'POST', user);
         this.props.recalculationPrice();
         counter = 0;
         break;

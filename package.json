@@ -2,6 +2,7 @@
   "name": "my-app2",
   "version": "0.1.0",
   "private": true,
+  "main": "server.js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -9,18 +10,20 @@
     "babel-eslint": "^10.1.0",
     "babel-plugin-transform-react-statements": "^0.7.3",
     "classnames": "^2.3.1",
+    "concurrently": "^6.2.1",
+    "config": "^3.3.6",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-react": "^7.24.0",
     "express": "^4.17.1",
     "jquery": "^3.6.0",
     "json-loader": "^0.5.7",
+    "mongoose": "^5.13.7",
     "nouislider": "^14.7.0",
     "nouislider-react": "^3.4.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-input-mask": "^2.0.4",
-    "react-phone-number-input": "^3.1.25",
     "react-redux": "^7.2.4",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
@@ -34,11 +37,16 @@
     "tp-react-web-masked-text": "^1.12.22",
     "web-vitals": "^1.1.2"
   },
+  "proxy": "http://localhost:5000",
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "client-install": "cd client && npm install",
+    "start": "react-scripts start",
+    "server": "nodemon server.js",
+    "client": "npm start --prefex client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "eslintConfig": {
     "extends": [
@@ -66,6 +74,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "husky": "^7.0.1",
     "lint-staged": "^11.1.2",
+    "nodemon": "^2.0.12",
     "prettier": "^2.3.2"
   }
 }

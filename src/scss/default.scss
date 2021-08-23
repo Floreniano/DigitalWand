@@ -132,6 +132,7 @@ input[type='number'] {
   span {
     position: absolute;
     background-color: #151515;
+    opacity: 1;
     left: 0;
     width: 100%;
     height: 2px;
@@ -149,8 +150,8 @@ input[type='number'] {
     bottom: 9px;
   }
   &.active span {
-    display: none;
-    transition: all 0.2s;
+    opacity: 0;
+    transition: all 0.5s;
   }
 }
 .logo-link.nav {
