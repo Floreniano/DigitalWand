@@ -1,7 +1,6 @@
 import { DATA_USERS } from 'redux/types';
-import data from 'data/authorization/authorization.json';
-import { dataItems } from './data';
+import { fetchItems } from './fetch';
 
 export default function dataUsers() {
-  return dataItems(data, DATA_USERS);
+  return fetchItems('/api/users', DATA_USERS);
 }

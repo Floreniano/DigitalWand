@@ -23,10 +23,8 @@ class AuthorizationPage extends Component {
     this.logout = this.logout.bind(this);
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     this.props.dataUsers();
-    /* eslint-disable no-console */
-    console.log(await request('/api/catalog'));
   }
 
   handleInput = (e) => {
@@ -38,7 +36,6 @@ class AuthorizationPage extends Component {
     const errorOutput = (errString) => this.setState({ error: errString });
     let counter = 0;
     const number = phone.replace(/\D+/g, '').substr(1);
-
     for (let i = 0; i < users.length; i++) {
       const user = users[i];
       counter = 1;

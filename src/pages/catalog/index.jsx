@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Nouislider from 'nouislider-react';
 // components
 import Header from 'components/Header';
 import Footer from 'components/Footer';
@@ -10,8 +10,7 @@ import close from 'assets/img/ic-actions-close-simple.svg';
 import star from 'assets/img/ic-actions-star-active.svg';
 import starNoActive from 'assets/img/ic-actions-star-no-active.svg';
 
-// libs
-import Nouislider from 'nouislider-react';
+// redux
 import { connect } from 'react-redux';
 import { dataCatalog } from 'redux/actions/catalog';
 import { addToCart } from 'redux/actions/cart';
@@ -363,18 +362,17 @@ class CatalogPage extends Component {
                   <button className="btn reset">Reset</button>
                 </div>
               </div>
-
               <div className="catalog__list">
-                {catalogItems.map((catalog) => (
+                {catalogItems.map((catalogItem) => (
                   <Catalog
-                    key={catalog.id}
-                    id={catalog.id}
-                    name={catalog.name}
-                    description={catalog.short_description}
-                    price={catalog.price}
-                    rating={catalog.rating}
-                    images={catalog.images}
-                    mainImage={catalog.mainImage}
+                    key={catalogItem.id}
+                    id={catalogItem.id}
+                    name={catalogItem.name}
+                    description={catalogItem.short_description}
+                    price={catalogItem.price}
+                    rating={catalogItem.rating}
+                    images={catalogItem.images}
+                    mainImage={catalogItem.mainImage}
                     onClickAddCart={this.addCardToCart}
                   />
                 ))}
