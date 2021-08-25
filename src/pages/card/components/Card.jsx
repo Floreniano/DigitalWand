@@ -1,5 +1,6 @@
 import React from 'react';
 import StarList from 'components/StarList';
+
 // Slider
 import Slider from 'react-slick';
 import SliderArrow from 'components/SliderArrow';
@@ -34,18 +35,10 @@ export default function Card({
     };
     onClickAddCart(obj);
   };
-
-  if (id !== parseInt(localStorage.catalogId, 16)) {
-    return (
-      <div className="card__inner not">
-        <h1 className="not-found">Нет подробностей о товаре</h1>
-      </div>
-    );
-  }
   return (
     <div className="card__inner">
       <Slider {...settings} className="card__list">
-        {images.map((image) => (
+        {images !== undefined ? images.map((image) => (
           <div className="card__list-item" key={image.id}>
             <img className="card__list-img" src={image.url} alt="product"></img>
             <div className="card__list-description">
@@ -53,7 +46,7 @@ export default function Card({
               <div className="card__list-shipping description">Free shipping</div>
             </div>
           </div>
-        ))}
+        )) : null}
       </Slider>
       <div className="card__content">
         <h1 className="card-title title">{name}</h1>

@@ -10,7 +10,7 @@ export const useRoutes = () => (
       <Route path="/catalog" exact>
         <CatalogPage />
       </Route>
-      <Route path="/card" exact>
+      <Route path="/card/:id" exact>
         <CardPage />
       </Route>
       <Route path="/basket" exact>

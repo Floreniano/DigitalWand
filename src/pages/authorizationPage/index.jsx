@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import InputMask from 'react-input-mask';
+import { request } from 'api/api.js';
 // components
 import Header from 'components/Header';
-import { request } from 'api/api.js';
 
 // assest
 import photoImg from 'assets/img/user-cabinet.png';
