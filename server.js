@@ -1,4 +1,5 @@
 const express = require('express');
+const { check, validationResult } = require('express-validator');
 
 const app = express();
 
@@ -119,10 +120,44 @@ const users = [
     password: 'qwerty',
   },
   {
+    phone: '79999999999',
+    password: 'qwerty',
+  },
+  {
     phone: '79999999998',
     password: 'qwert',
   },
 ];
+
+const successfulAuth = [
+  {
+    status: 200,
+    msg: '',
+    data: {
+      auth: true,
+      user: {
+        id: 1,
+        phone: '79999999999',
+        name: 'Bob',
+        address: 'Russia, Very-long street',
+        sale: 10,
+      },
+    },
+  },
+];
+
+const noSuccessfulAuth = [
+  {
+    status: 200,
+    msg: 'Неверный номер телефона или пароль.',
+    data: {
+      auth: false,
+    },
+  },
+];
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.get('/api/catalog', (req, res) => {
   res.status(200).json(catalog);
@@ -135,6 +170,33 @@ app.get('/api/product', (req, res) => {
 app.get('/api/users', (req, res) => {
   res.status(200).json(users);
 });
+
+app.post(
+  '/api/users',
+  [
+    check('password', 'Пароль может содержать только латинские буквы алфавита и цифры')
+      .matches(/^[a-zA-Z0-9_ ]*$/)
+      .isLength({ min: 6 })
+      .withMessage('Минимальная длина пароля 6 символов'),
+  ],
+  (req, res) => {
+    try {
+      const errors = validationResult(req);
+      const { number, password } = req.body;
+      for (let i = 0; i < users.length; i++) {
+        if (users[i].phone === number && users[i].password === password) {
+          return res.status(200).json(successfulAuth);
+        }
+      }
+      if (!errors.isEmpty()) {
+        return res.status(200).json(errors.array());
+      }
+      return res.status(200).json(noSuccessfulAuth);
+    } catch (e) {
+      return res.status(500).json({ message: 'Ошибка 500' });
+    }
+  },
+);
 
 const port = 5000;
 

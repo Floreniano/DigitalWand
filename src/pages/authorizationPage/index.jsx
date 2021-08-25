@@ -9,7 +9,6 @@ import photoImg from 'assets/img/user-cabinet.png';
 
 // redux
 import { connect } from 'react-redux';
-import dataUsers from 'redux/actions/users';
 import { recalculationPrice } from 'redux/actions/cart';
 
 class AuthorizationPage extends Component {
@@ -23,35 +22,26 @@ class AuthorizationPage extends Component {
     this.logout = this.logout.bind(this);
   }
 
-  componentDidMount() {
-    this.props.dataUsers();
-  }
-
   handleInput = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  authorization(phone, password) {
-    const { users } = this.props;
-    const errorOutput = (errString) => this.setState({ error: errString });
-    let counter = 0;
-    const number = phone.replace(/\D+/g, '').substr(1);
-    for (let i = 0; i < users.length; i++) {
-      const user = users[i];
-      counter = 1;
-      if (user.password === password && user.phone.substr(1) === number) {
-        localStorage.setItem('user', JSON.stringify(user));
-        /* eslint-disable no-console */
-        request('/api/catalog', 'POST', user);
+  async loginHandler(phone, password) {
+    try {
+      const errorOutput = (errString) => this.setState({ error: errString });
+      const number = `7${phone.replace(/\D+/g, '').substr(1)}`;
+      const response = await request('/api/users', 'POST', { number, password });
+      if (response[0].msg !== '') {
+        errorOutput(response[0].msg);
+      } else {
+        errorOutput('');
+        localStorage.setItem('user', JSON.stringify(response[0].data.user));
+        window.location = '/authorization';
         this.props.recalculationPrice();
-        counter = 0;
-        break;
       }
-    }
-    if (counter === 1) {
-      errorOutput('Неверный телефон или пароль.');
-    } else {
-      errorOutput('');
+    } catch (err) {
+      /* eslint-disable no-console */
+      console.log('ERROR:', err);
     }
   }
 
@@ -142,7 +132,7 @@ class AuthorizationPage extends Component {
               ></input>
               <button
                 className="btn authorization"
-                onClick={() => this.authorization(phone, password)}
+                onClick={() => this.loginHandler(phone, password)}
                 id="btnConfirm"
                 disabled={!enabled}
               >
@@ -156,13 +146,8 @@ class AuthorizationPage extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  users: state.users.users,
-});
-
 const mapDispatchToProps = {
-  dataUsers,
   recalculationPrice,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AuthorizationPage);
+export default connect(null, mapDispatchToProps)(AuthorizationPage);
