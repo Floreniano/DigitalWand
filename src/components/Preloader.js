@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Preloader() {
   return (
-    <div className='preloader'>
+    <div id='page-preloader' className='preloader'>
       <svg
         className='preloader__image'
         role='img'

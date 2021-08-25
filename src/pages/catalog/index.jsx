@@ -4,6 +4,7 @@ import Nouislider from 'nouislider-react';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import Catalog from 'pages/catalog/components/CatalogList.js';
+import Preloader from 'components/Preloader';
 
 // assets
 import close from 'assets/img/ic-actions-close-simple.svg';
@@ -44,7 +45,10 @@ class CatalogPage extends Component {
   }
 
   render() {
-    const { catalog: catalogItems } = this.props;
+    const { catalog: catalogItems, loading } = this.props;
+    if (loading) {
+      return <Preloader />;
+    }
     return (
       <div className="catalog">
         <Header></Header>
@@ -439,6 +443,7 @@ class CatalogPage extends Component {
 const mapStateToProps = (state) => ({
   catalog: state.catalog.catalog,
   countCart: state.catalog.totalCount,
+  loading: state.app.loading,
 });
 
 const mapDispatchToProps = {

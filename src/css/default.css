@@ -773,7 +773,14 @@ input[type='number'] {
   bottom: 0;
   overflow: hidden;
   background: #f9f9f9;
+  -webkit-transition: 1s all;
+  transition: 1s all;
   z-index: 1001;
+}
+
+.preloader.done {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .preloader__image {
@@ -802,16 +809,6 @@ input[type='number'] {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
   }
-}
-
-.loaded_hiding .preloader {
-  -webkit-transition: 2s opacity ease-in-out;
-  transition: 2s opacity ease-in-out;
-  opacity: 0;
-}
-
-.loaded .preloader {
-  display: none;
 }
 
 @media (max-width: 900px) {

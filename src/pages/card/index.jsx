@@ -1,28 +1,22 @@
 import React, { Component } from 'react';
-import { request } from 'api/api.js';
+// import { request } from 'api/api.js';
 // components
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import Card from 'pages/card/components/Card';
+import Preloader from 'components/Preloader';
 
 // redux
 import { connect } from 'react-redux';
+import { dataProduct } from 'redux/actions/card';
 import { addToCart } from 'redux/actions/cart';
 
 class CardPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: [],
-    };
-  }
-
-  async componentDidMount() {
+  componentDidMount() {
     try {
       const address = window.location.href;
       const last = address.substr(address.lastIndexOf('/') + 1);
-      const response = await request(`/api/catalog/${last}`, 'GET');
-      this.setState({ data: response });
+      this.props.dataProduct(last);
     } catch (err) {
       /* eslint-disable no-console */
       console.log('ERROR: ', err);
@@ -34,23 +28,26 @@ class CardPage extends Component {
   };
 
   render() {
-    const { data: productItem } = this.state;
+    const { card, loading } = this.props;
+    if (loading) {
+      return <Preloader />;
+    }
     return (
       <div className="card-content">
         <Header></Header>
 
         <section className="card-description">
           <div className="content description-card">
-            {productItem !== undefined ? (
+            {card !== undefined ? (
               <Card
-                key={productItem.id}
-                id={productItem.id}
-                name={productItem.name}
-                fullDescription={productItem.fullDescription}
-                price={productItem.price}
-                rating={productItem.rating}
-                images={productItem.images}
-                mainImage={productItem.mainImage}
+                key={card.id}
+                id={card.id}
+                name={card.name}
+                fullDescription={card.fullDescription}
+                price={card.price}
+                rating={card.rating}
+                images={card.images}
+                mainImage={card.mainImage}
                 onClickAddCart={this.addCardToCart}
               />
             ) : (
@@ -66,9 +63,18 @@ class CardPage extends Component {
     );
   }
 }
+const mapStateToProps = (state) => ({
+  card: state.card.card,
+  loading: state.app.loading,
+});
+// const mapStateToProps = (state) => {
+//   console.log(state);
+//   return state;
+// };
 
 const mapDispatchToProps = {
+  dataProduct,
   addToCart,
 };
 
-export default connect(null, mapDispatchToProps)(CardPage);
+export default connect(mapStateToProps, mapDispatchToProps)(CardPage);
