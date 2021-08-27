@@ -94,10 +94,6 @@ const users = [
     password: 'qwerty',
   },
   {
-    phone: '79999999999',
-    password: 'qwerty',
-  },
-  {
     phone: '79999999998',
     password: 'qwert',
   },
@@ -112,6 +108,20 @@ const successfulAuth = [
       user: {
         id: 1,
         phone: '79999999999',
+        name: 'Bob',
+        address: 'Russia, Very-long street',
+        sale: 10,
+      },
+    },
+  },
+  {
+    status: 200,
+    msg: '',
+    data: {
+      auth: true,
+      user: {
+        id: 1,
+        phone: '79999999998',
         name: 'Bob',
         address: 'Russia, Very-long street',
         sale: 10,
@@ -159,7 +169,9 @@ app.post(
       const { number, password } = req.body;
       for (let i = 0; i < users.length; i++) {
         if (users[i].phone === number && users[i].password === password) {
-          return res.status(200).json(successfulAuth);
+          return res
+            .status(200)
+            .json(successfulAuth.find((data) => data.data.user.phone === users[i].phone));
         }
       }
       if (!errors.isEmpty()) {

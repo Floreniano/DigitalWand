@@ -16,6 +16,8 @@ class AuthorizationPage extends Component {
     super(props);
     this.state = {
       phone: '999999999',
+      name: '',
+      address: '',
       password: 'qwerty',
       error: '',
     };
@@ -26,16 +28,28 @@ class AuthorizationPage extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  componentDidMount() {
+    const data = localStorage.getItem('user');
+    if (data) {
+      const dataJSON = JSON.parse(data);
+      this.setState({
+        phone: dataJSON.phone.slice(1),
+        name: dataJSON.name,
+        address: dataJSON.address,
+      });
+    }
+  }
+
   async loginHandler(phone, password) {
     try {
       const errorOutput = (errString) => this.setState({ error: errString });
       const number = `7${phone.replace(/\D+/g, '').substr(1)}`;
       const response = await request('/api/users', 'POST', { number, password });
-      if (response[0].msg !== '') {
+      if (response.msg !== '') {
         errorOutput(response[0].msg);
       } else {
         errorOutput('');
-        localStorage.setItem('user', JSON.stringify(response[0].data.user));
+        localStorage.setItem('user', JSON.stringify(response.data.user));
         window.location = '/authorization';
         this.props.recalculationPrice();
       }
@@ -52,7 +66,7 @@ class AuthorizationPage extends Component {
   }
 
   render() {
-    const { phone, password, error } = this.state;
+    const { phone, name, address, password, error } = this.state;
     const enabled = phone.length > 0 && password.length > 0;
     return (
       <div className="authorization-content">
@@ -72,11 +86,26 @@ class AuthorizationPage extends Component {
                   </div>
                   <div className="cabinet__info-item-info">
                     <h2 className="title-for-input">First name</h2>
-                    <input type="text" className="custom-input" placeholder="First name"></input>
+                    <input
+                      type="text"
+                      className="custom-input"
+                      placeholder="First name"
+                      name="name"
+                      value={name}
+                      onChange={this.handleInput}
+                    ></input>
                   </div>
                   <div className="cabinet__info-item-info">
                     <h2 className="title-for-input">Phone number</h2>
-                    <input type="text" className="custom-input" placeholder="Phone number"></input>
+                    <InputMask
+                      className="custom-input"
+                      name="phone"
+                      mask="8 (999) 999 - 99 - 99"
+                      placeholder="Введите телефон"
+                      maskChar={'_'}
+                      value={phone}
+                      onChange={this.handleInput}
+                    ></InputMask>
                   </div>
                   <div className="cabinet__info-item-info">
                     <h2 className="title-for-input">Email address</h2>
@@ -88,7 +117,14 @@ class AuthorizationPage extends Component {
                   </div>
                   <div className="cabinet__info-item-info">
                     <h2 className="title-for-input">Address</h2>
-                    <input type="text" className="custom-input" placeholder="Address"></input>
+                    <input
+                      type="text"
+                      className="custom-input"
+                      placeholder="Address"
+                      name="address"
+                      value={address}
+                      onChange={this.handleInput}
+                    ></input>
                   </div>
                   <div className="cabinet-btns">
                     <button className="btn cabinet-confirm">Подтвердить</button>

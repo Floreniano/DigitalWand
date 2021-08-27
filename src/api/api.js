@@ -1,4 +1,4 @@
-export async function request(url, method = 'GET', body = null) {
+export async function request(url, method, body = null) {
   try {
     const response = await fetch(`http://localhost:3000${url}`, {
       method,

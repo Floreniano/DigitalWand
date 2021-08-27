@@ -1,11 +1,11 @@
 import { request } from 'api/api.js';
 import { hideLoader, showLoader } from './loader';
 
-export function fetchItems(url, actionType) {
+export function fetchItems(url, method, actionType) {
   return async (dispatch) => {
     try {
       dispatch(showLoader());
-      const response = await request(url);
+      const response = await request(url, method);
       let json = response;
       if (url === '/api/catalog') {
         json = response[0].data;
@@ -14,7 +14,9 @@ export function fetchItems(url, actionType) {
         type: actionType,
         payload: json,
       });
-      dispatch(hideLoader());
+      setTimeout(() => {
+        dispatch(hideLoader());
+      }, 1000);
     } catch (err) {
       dispatch(hideLoader());
       /* eslint-disable no-console */

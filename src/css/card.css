@@ -187,11 +187,11 @@
 }
 
 .slick-prev {
-  left: 5px;
+  left: 10px;
 }
 
 .slick-next {
-  right: 5px;
+  right: 10px;
 }
 
 .card__buy {

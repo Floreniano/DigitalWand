@@ -148,9 +148,16 @@
   .cabinet__info {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
+    margin-bottom: 32px;
   }
   .cabinet__info-item-discount {
     margin-right: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cabinet__info {
+    margin-bottom: 32px;
   }
 }
 
