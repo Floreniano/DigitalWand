@@ -52,7 +52,7 @@ class CardPage extends Component {
               />
             ) : (
               <div className="card__inner not">
-                <h1 className="not-found">Подробности о товаре не найдены</h1>
+                <h1 className="not-found">Подробности о товаре не найдены или товара не существует</h1>
               </div>
             )}
           </div>
@@ -67,10 +67,6 @@ const mapStateToProps = (state) => ({
   card: state.card.card,
   loading: state.app.loading,
 });
-// const mapStateToProps = (state) => {
-//   console.log(state);
-//   return state;
-// };
 
 const mapDispatchToProps = {
   dataProduct,

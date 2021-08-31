@@ -2,7 +2,7 @@
   width: 100%;
   position: relative;
   background-color: #f5f5f5;
-  padding: 100px 0 50px;
+  padding: 25px 0 25px;
   &.authorization {
     padding: 50px 0 50px;
     display: flex;
@@ -13,17 +13,12 @@
       display: none;
     }
   }
-  &::after {
-    position: absolute;
-    content: 'Личный кабинет';
-    top: 20px;
-    font-size: 24px;
-  }
   &__info {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 32px;
     align-items: flex-start;
+    margin-top: 25px;
     &-item {
       display: flex;
       border: 1px solid #d1d1d1;
@@ -75,10 +70,11 @@
       }
     }
   }
-  &-btns{
+  &-btns {
     display: flex;
     margin-top: 24px;
     justify-content: space-between;
+    align-items: center;
   }
 }
 .error {
@@ -97,37 +93,62 @@
     display: none;
   }
 }
+.successfully {
+  color: #6a983c;
+  background-color: #c8deb3;
+  border-radius: 12px;
+  padding: 5px 10px;
+  font-size: 16px;
+  opacity: 1;
+  transition: all 0.5s;
+  &:empty {
+    opacity: 0;
+    padding: 0;
+  }
+}
+
+@media (max-width: 1140px) {
+  .cabinet-btns {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .cabinet-confirm{
+    margin-bottom: 10px;
+  }
+}
 
 @media (max-width: 700px) {
-  .cabinet__info{
+  .cabinet__info {
     grid-template-columns: 1fr;
     margin-bottom: 32px;
   }
-  .cabinet__info-item-discount{
+  .cabinet__info-item-discount {
     margin-right: 16px;
   }
 }
 @media (max-width: 600px) {
-  .cabinet__info{
+  .cabinet__info {
     margin-bottom: 32px;
   }
 }
 @media (max-width: 380px) {
-  .cabinet__info-item{
-    &-top{
+  .cabinet__info-item {
+    &-top {
       flex-direction: column;
     }
-    .btn.cabinet-confirm,.btn.exit.bottom{
-      width: 50%;
+    .btn.cabinet-confirm,
+    .btn.exit.bottom {
+      width: 100%;
       display: block;
+      padding: 10px 0;
     }
-    .btn.exit.bottom{
-      margin-left: 12px;
+    .btn.exit.bottom {
+      margin-bottom: 12px;
     }
-    .btn.exit.top{
+    .btn.exit.top {
       display: none;
     }
-    &-photo{
+    &-photo {
       margin: 0;
     }
   }

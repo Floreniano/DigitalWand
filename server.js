@@ -108,6 +108,7 @@ const successfulAuth = [
       user: {
         id: 1,
         phone: '79999999999',
+        email: 'mail1@mailbox.com',
         name: 'Bob',
         address: 'Russia, Very-long street',
         sale: 10,
@@ -120,8 +121,9 @@ const successfulAuth = [
     data: {
       auth: true,
       user: {
-        id: 1,
+        id: 2,
         phone: '79999999998',
+        email: 'mail2@mailbox.com',
         name: 'Bob',
         address: 'Russia, Very-long street',
         sale: 10,
@@ -155,6 +157,10 @@ app.get('/api/users', (req, res) => {
   res.status(200).json(users);
 });
 
+app.get('/api/test', (req, res) => {
+  res.status(200).json(successfulAuth);
+});
+
 app.post(
   '/api/users',
   [
@@ -181,6 +187,30 @@ app.post(
     } catch (e) {
       return res.status(500).json([{ msg: 'Ошибка 500' }]);
     }
+  },
+);
+
+app.put(
+  '/api/user/:id',
+  (req, res) => {
+    const data = successfulAuth.find((dataUser) => dataUser.data.user.id === Number(req.params.id));
+    const dataUser = data.data.user;
+    const dataAuth = users.find((item) => item.phone === req.body.prevPhone);
+
+    const modifiedData = req.body;
+
+    dataAuth.phone = modifiedData.phone;
+    dataUser.phone = modifiedData.phone;
+    dataUser.name = modifiedData.name;
+    dataUser.address = modifiedData.address;
+    dataUser.email = modifiedData.email;
+    res.status(200).json({
+      status: 200,
+      msg: '',
+      data: {
+        edited: req.params.id, // ID отредактированного пользователя
+      },
+    });
   },
 );
 

@@ -49,20 +49,39 @@ class BasketPage extends Component {
     window.history.go(-1);
   }
 
+  handleInput = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
   componentDidMount() {
-    const dataUser = localStorage.getItem('user');
-    const dataParse = JSON.parse(dataUser);
-    if (dataUser) {
+    const data = localStorage.getItem('user');
+    if (data) {
+      const dataJSON = JSON.parse(data);
       this.setState({
-        phone: dataParse.phone,
+        phone: dataJSON.phone.slice(1),
+        firstName: dataJSON.name,
+        address: dataJSON.address,
+        sale: dataJSON.sale,
       });
     }
   }
 
   render() {
-    const { firstName, lastName, phone, address, email } = this.state;
     const {
-      items, totalCount, subTotalPrice, tax, totalPrice, totalPriceWithDiscount } = this.props;
+      firstName,
+      lastName,
+      phone,
+      address,
+      email,
+    } = this.state;
+    const {
+      items,
+      totalCount,
+      subTotalPrice,
+      tax,
+      totalPrice,
+      totalPriceWithDiscount,
+    } = this.props;
     const addedCards = Object.keys(items).map((key) => items[key].items[0]);
     return (
       <div className="basket">
@@ -87,6 +106,8 @@ class BasketPage extends Component {
                           required
                           type="text"
                           defaultValue={firstName}
+                          name="firstName"
+                          onChange={this.handleInput}
                           className="custom-input"
                           placeholder="First name"
                         ></input>
@@ -96,7 +117,9 @@ class BasketPage extends Component {
                         <input
                           required
                           type="text"
+                          name="lastName"
                           defaultValue={lastName}
+                          onChange={this.handleInput}
                           className="custom-input"
                           placeholder="Last name"
                         ></input>
@@ -106,7 +129,9 @@ class BasketPage extends Component {
                         <input
                           required
                           type="email"
+                          name="email"
                           defaultValue={email}
+                          onChange={this.handleInput}
                           className="custom-input"
                           placeholder="Email address"
                         ></input>
@@ -120,7 +145,8 @@ class BasketPage extends Component {
                           mask="8 (999) 999 - 99 - 99"
                           placeholder="Phone number"
                           maskChar={'_'}
-                          value={phone.substr(1)}
+                          value={phone}
+                          onChange={this.handleInput}
                         ></InputMask>
                       </div>
                       <div className="personal__information-item">
@@ -128,7 +154,9 @@ class BasketPage extends Component {
                         <input
                           required
                           type="text"
+                          name="address"
                           defaultValue={address}
+                          onChange={this.handleInput}
                           className="custom-input"
                           placeholder="Address"
                         ></input>
@@ -138,6 +166,7 @@ class BasketPage extends Component {
                         <input
                           required
                           type="text"
+                          name="town"
                           className="custom-input"
                           placeholder="Town or city"
                         ></input>
@@ -147,6 +176,7 @@ class BasketPage extends Component {
                         <input
                           required
                           type="text"
+                          name="country"
                           className="custom-input"
                           placeholder="State or country"
                         ></input>
@@ -156,15 +186,20 @@ class BasketPage extends Component {
                         <input
                           required
                           type="number"
+                          name="ZIP"
                           className="custom-input"
                           placeholder="Postal code or ZIP"
                         ></input>
                       </div>
                       <div className="personal__information-item differrent-address">
-                        <input type="checkbox" className="input-check" id="different"></input>
-                        <label htmlFor="different" className="label-check">
-                          Ship to a different address?
-                        </label>
+                         <input
+                         type="checkbox"
+                         className="input-check"
+                         id="different">
+                         </input>
+                         <label htmlFor="different" className="label-check">
+                           Ship to a different address?
+                         </label>
                       </div>
                     </div>
                   </div>

@@ -44,6 +44,12 @@ input[type='number'] {
   &.cabinet {
     font-size: 24px;
   }
+  &-for-input {
+    line-height: 18px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;;
+    white-space: nowrap;
+  }
 }
 .container {
   max-width: 1260px;
@@ -485,6 +491,11 @@ input[type='number'] {
   font-size: 14px;
   line-height: 19px;
   background-color: #f9f9f9;
+  transition: all .6s;
+  &.no-valid{
+    border: 1px solid rgba(237,126,126,0.37);
+    background: rgba(255,234,228,0.35);
+  }
   &::placeholder {
     color: #a9a9a9;
   }
@@ -495,6 +506,20 @@ input[type='number'] {
   &.authorization {
     width: 300px;
     margin: 20px;
+  }
+}
+.input-top{
+  display: flex;
+  justify-content: space-between;
+  & span{
+    opacity: 1;
+    transition: all .6s;
+    margin-left: 10px;
+    color:rgb(223, 62, 62);
+    align-self: flex-end;
+    &:empty{
+      opacity: 0;
+    }
   }
 }
 //check
@@ -632,6 +657,7 @@ input[type='number'] {
       transition: all 0.3s;
       font-size: 18px;
       border-bottom: 2px groove #d1d1d1;
+      margin-bottom: 12px;
     }
     &__list {
       flex-direction: column;

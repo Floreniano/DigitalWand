@@ -24,7 +24,7 @@ const getTotalDiscount = (price) => {
     totalPriceWithDiscount = Math.round(price - price * 0.05);
   }
   if (localStorage.getItem('user')) {
-    totalPriceWithDiscount = Math.round(price - price * 0.1);
+    totalPriceWithDiscount = Math.round(price - price * 0.10);
   }
   return totalPriceWithDiscount;
 };

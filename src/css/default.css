@@ -55,6 +55,13 @@ input[type='number'] {
   font-size: 24px;
 }
 
+.title-for-input {
+  line-height: 18px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  white-space: nowrap;
+}
+
 .container {
   max-width: 1260px;
   margin: 0 auto;
@@ -664,6 +671,13 @@ input[type='number'] {
   font-size: 14px;
   line-height: 19px;
   background-color: #f9f9f9;
+  -webkit-transition: all .6s;
+  transition: all .6s;
+}
+
+.custom-input.no-valid {
+  border: 1px solid rgba(237, 126, 126, 0.37);
+  background: rgba(255, 234, 228, 0.35);
 }
 
 .custom-input::-webkit-input-placeholder {
@@ -690,6 +704,29 @@ input[type='number'] {
 .custom-input.authorization {
   width: 300px;
   margin: 20px;
+}
+
+.input-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.input-top span {
+  opacity: 1;
+  -webkit-transition: all .6s;
+  transition: all .6s;
+  margin-left: 10px;
+  color: #df3e3e;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.input-top span:empty {
+  opacity: 0;
 }
 
 .label-check {
@@ -866,6 +903,7 @@ input[type='number'] {
     transition: all 0.3s;
     font-size: 18px;
     border-bottom: 2px groove #d1d1d1;
+    margin-bottom: 12px;
   }
   .nav__list {
     -webkit-box-orient: vertical;
