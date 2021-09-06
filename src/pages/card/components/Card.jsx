@@ -35,6 +35,7 @@ export default function Card({
     };
     onClickAddCart(obj);
   };
+
   return (
     <div className="card__inner">
       <Slider {...settings} className="card__list">
@@ -52,7 +53,7 @@ export default function Card({
         <h1 className="card-title title">{name}</h1>
         <div className="card__rating">
           <div className="card__rating-list">
-            <StarList ratingStars={rating} />
+            <StarList ratingStars={rating} cardId={id} />
           </div>
           <div className="card__review">
             (

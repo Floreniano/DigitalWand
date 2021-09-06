@@ -11,8 +11,8 @@ const catalog = [
       {
         id: 1,
         name: 'Product 1',
-        short_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        full_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. S 9',
+        shortDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        fullDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. S 9',
         rating: 5,
         price: 500,
         images: [
@@ -30,8 +30,8 @@ const catalog = [
       {
         id: 2,
         name: 'Product 2',
-        short_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        full_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. S 25',
+        shortDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        fullDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. S 25',
         rating: 3,
         price: 1500,
         images: [
@@ -49,8 +49,8 @@ const catalog = [
       {
         id: 3,
         name: 'Product 3',
-        short_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        full_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. S 25',
+        shortDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        fullDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. S 25',
         rating: 3,
         price: 700,
         images: [
@@ -68,8 +68,8 @@ const catalog = [
       {
         id: 4,
         name: 'Product 4',
-        short_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        full_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. S 25',
+        shortDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        fullDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. S 25',
         rating: 3,
         price: 800,
         images: [
@@ -190,29 +190,38 @@ app.post(
   },
 );
 
-app.put(
-  '/api/user/:id',
-  (req, res) => {
-    const data = successfulAuth.find((dataUser) => dataUser.data.user.id === Number(req.params.id));
-    const dataUser = data.data.user;
-    const dataAuth = users.find((item) => item.phone === req.body.prevPhone);
+app.put('/api/catalog/:id', (req, res) => {
+  const dataCard = catalog[0].data.find((item) => item.id === req.body.cardId);
+  dataCard.rating = req.body.ratingValue;
+  res.status(200).json({
+    status: 200,
+    msg: '',
+    data: {
+      edited: req.params.id, // ID отредактированного пользователя
+    },
+  });
+});
 
-    const modifiedData = req.body;
+app.put('/api/user/:id', (req, res) => {
+  const data = successfulAuth.find((dataUser) => dataUser.data.user.id === Number(req.params.id));
+  const dataUser = data.data.user;
+  const dataAuth = users.find((item) => item.phone === req.body.prevPhone);
 
-    dataAuth.phone = modifiedData.phone;
-    dataUser.phone = modifiedData.phone;
-    dataUser.name = modifiedData.name;
-    dataUser.address = modifiedData.address;
-    dataUser.email = modifiedData.email;
-    res.status(200).json({
-      status: 200,
-      msg: '',
-      data: {
-        edited: req.params.id, // ID отредактированного пользователя
-      },
-    });
-  },
-);
+  const modifiedData = req.body;
+
+  dataAuth.phone = modifiedData.phone;
+  dataUser.phone = modifiedData.phone;
+  dataUser.name = modifiedData.name;
+  dataUser.address = modifiedData.address;
+  dataUser.email = modifiedData.email;
+  res.status(200).json({
+    status: 200,
+    msg: '',
+    data: {
+      edited: req.params.id, // ID отредактированного пользователя
+    },
+  });
+});
 
 const port = 5000;
 

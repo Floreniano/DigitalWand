@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
+import { request } from 'api/api';
 
-export default function Header({ ratingStars }) {
+export default function Header({ ratingStars, cardId }) {
   const [rating, setRating] = useState(ratingStars);
   const [hover, setHover] = useState(null);
+
+  const editRating = async (ratingValue) => {
+    await request(`/api/catalog/${cardId}`, 'PUT', { ratingValue, cardId });
+    setRating(ratingValue);
+  };
 
   return (
     <div>
@@ -14,7 +20,7 @@ export default function Header({ ratingStars }) {
               type="radio"
               name="reviewStars"
               value={i}
-              onClick={() => setRating(ratingValue)}
+              onClick={() => editRating(ratingValue)}
             />
             <svg
               onMouseEnter={() => setHover(ratingValue)}
