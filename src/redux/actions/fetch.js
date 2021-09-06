@@ -16,7 +16,7 @@ export function fetchItems(url, method, actionType) {
       });
       setTimeout(() => {
         dispatch(hideLoader());
-      }, 1000);
+      }, 500);
     } catch (err) {
       dispatch(hideLoader());
       /* eslint-disable no-console */

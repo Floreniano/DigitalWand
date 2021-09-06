@@ -6,8 +6,10 @@ export default function Header({ ratingStars, cardId }) {
   const [hover, setHover] = useState(null);
 
   const editRating = async (ratingValue) => {
-    await request(`/api/catalog/${cardId}`, 'PUT', { ratingValue, cardId });
-    setRating(ratingValue);
+    if (localStorage.getItem('user')) {
+      await request(`/api/catalog/${cardId}`, 'PUT', { ratingValue, cardId });
+      setRating(ratingValue);
+    }
   };
 
   return (
@@ -23,7 +25,7 @@ export default function Header({ ratingStars, cardId }) {
               onClick={() => editRating(ratingValue)}
             />
             <svg
-              onMouseEnter={() => setHover(ratingValue)}
+              onMouseEnter={localStorage.getItem('user') ? () => setHover(ratingValue) : null}
               onMouseLeave={() => setHover(null)}
               width="16"
               height="16"
