@@ -5,11 +5,7 @@ import 'css/reset.css';
 import 'css/slick.css';
 import 'nouislider/distribute/nouislider.css';
 // css
-import 'css/default.css';
-import 'css/catalog.css';
-import 'css/basket.css';
-import 'css/card.css';
-import 'css/authorizaiton.css';
+import 'css/index.css';
 
 import { useRoutes } from './routes';
 

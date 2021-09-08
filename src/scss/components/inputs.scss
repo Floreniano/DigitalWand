@@ -1,0 +1,108 @@
+.input-check,
+.input-radio {
+  display: none;
+}
+/* Обычный инпут */
+.custom-input {
+  position: relative;
+  width: 100%;
+  padding: 11px 16px 12px 21px;
+  border-radius: 12px;
+  border: 1px solid #d1d1d1;
+  font-size: 14px;
+  line-height: 19px;
+  background-color: #f9f9f9;
+  transition: all 0.6s;
+  &::placeholder {
+    color: #a9a9a9;
+  }
+  &.no-valid {
+    border: 1px solid rgba(237, 126, 126, 0.37);
+    background: rgba(255, 234, 228, 0.35);
+  }
+  &.card {
+    margin-bottom: 32px;
+    max-height: 42px;
+  }
+  &.authorization {
+    width: 300px;
+    margin: 20px;
+  }
+}
+
+/* Инпут в авторизации */
+.input-top {
+  display: flex;
+  justify-content: space-between;
+  & span {
+    opacity: 1;
+    transition: all 0.6s;
+    margin-left: 10px;
+    color: rgb(223, 62, 62);
+    align-self: flex-end;
+    &:empty {
+      opacity: 0;
+    }
+  }
+}
+
+/* Радио и чекбокс */
+.label-check {
+  display: inline-flex;
+  align-items: center;
+  line-height: 19px;
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1.5px solid #d1d1d1;
+    border-radius: 0.25em;
+    margin-right: 10px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+  }
+}
+.input-check:checked + .label-check::before {
+  border-color: #6a983c;
+  background-color: #6a983c;
+  background-image: url('assets/img/checkbox.svg');
+  background-size: 75%;
+}
+.label-radio {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  line-height: 19px;
+  font-size: 14px;
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid #adb5bd;
+    border-radius: 50%;
+    margin-right: 8px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+  }
+}
+.input-radio:checked + .label-radio::before {
+  border-color: #151515;
+  background-color: #151515;
+  background-image: url('assets/img/radio.svg');
+}
+
+@media (max-width: 470px) {
+  .custom-input.authorization {
+    width: 100%;
+  }
+}

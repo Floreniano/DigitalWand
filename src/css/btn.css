@@ -1,0 +1,98 @@
+.btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #6a983c;
+  border: 2px solid #46760a;
+  border-radius: 12px;
+  color: #ffff;
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn:hover:not(:disabled) {
+  background-color: #46760a;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn-back {
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.btn.clear {
+  padding: 10px;
+  margin: 15px 0 0 auto;
+}
+
+.btn.authorization {
+  padding: 15px 55px;
+}
+
+.btn.authorization:disabled {
+  background-color: #d1d1d1;
+  border: 2px solid #d1d1d1;
+  color: #151515;
+}
+
+.btn.exit {
+  display: block;
+}
+
+.btn.exit.bottom {
+  display: none;
+}
+
+.btn.exit.top {
+  padding: 15px 55px;
+}
+
+.btn-operation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 12px;
+  border: 1px solid #d1d1d1;
+  padding: 4px;
+  opacity: 1;
+  background-color: transparent;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.btn-operation:hover:not(:disabled) {
+  background-color: #c8deb3;
+}
+
+.btn-operation:disabled {
+  background-color: #f5f5f5;
+}
+
+.btn-operation.minus svg path:first-of-type {
+  display: none;
+}
+
+.btn.cabinet-confirm {
+  -ms-flex-item-align: start;
+      -ms-grid-row-align: start;
+      align-self: start;
+  width: 200px;
+  padding: 10px 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}

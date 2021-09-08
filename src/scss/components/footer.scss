@@ -1,0 +1,113 @@
+.footer {
+  &__inner {
+    padding-top: 64px;
+  }
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    &-item-title {
+      position: relative;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+      line-height: 27px;
+      font-size: 18px;
+    }
+    &-info {
+      display: flex;
+      flex-direction: column;
+      &-item {
+        padding-top: 16px;
+      }
+      &-link {
+        color: #6a983c;
+        font-size: 14px;
+        line-height: 19px;
+        text-decoration: none;
+        background-image: linear-gradient(currentColor, currentColor);
+        background-position: 0% 100%;
+        background-repeat: no-repeat;
+        background-size: 0% 1px;
+        transition: background-size 0.5s ease-in-out;
+        &:hover {
+          background-size: 100% 1px;
+        }
+      }
+    }
+  }
+  &__author {
+    font-size: 14px;
+    line-height: 19px;
+    padding: 48px 0 64px 0;
+  }
+}
+.products__tags {
+  margin-top: 48px;
+  &-title {
+    font-weight: 600;
+    line-height: 27px;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+  }
+  &-list {
+    display: flex;
+    flex-wrap: wrap;
+    &-item {
+      margin-top: 16px;
+    }
+    &-link {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      line-height: 18px;
+      padding: 4px 10px;
+      white-space: nowrap;
+      background: #f5f5f5;
+      border-radius: 12px;
+      margin: 0px 16px 0 0;
+      transition: all 0.4s ease-in-out;
+      &:hover {
+        background: #a9a9a9;
+        transition: all 0.4s ease-in-out;
+      }
+    }
+  }
+}
+@media (max-width: 680px) {
+  .footer__list {
+    flex-direction: column;
+    &-item {
+      width: 100%;
+      margin-top: 14px;
+      background-color: #ebebeb;
+      padding-right: 20px;
+      padding-left: 5px;
+      border-radius: 12px;
+      &-title {
+        cursor: pointer;
+        &::before {
+          position: absolute;
+          content: '';
+          background-image: url('assets/img/ic-chevron-down-black.svg');
+          background-repeat: no-repeat;
+          background-position: center center;
+          right: -17px;
+          top: 3px;
+          width: 20px;
+          height: 20px;
+          transition: all 0.4s ease-in-out;
+        }
+      }
+      &-title.active::before {
+        transform: rotate(180deg);
+        transition: all 0.4s ease-in-out;
+      }
+    }
+    &-info {
+      border-radius: 12px;
+      &-item:last-child {
+        padding-bottom: 5px;
+      }
+    }
+  }
+}

@@ -1,10 +1,8 @@
 .cabinet {
   width: 100%;
   position: relative;
-  background-color: #f5f5f5;
   padding: 25px 0 25px;
   &.authorization {
-    padding: 50px 0 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;

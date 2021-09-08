@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@400;500;600;700&display=swap");
 @font-face {
   font-family: 'Poppins';
   src: url("../fonts/Poppins Bold.eot");
@@ -37,4 +38,3 @@
   font-stretch: normal;
   unicode-range: U+0020-2212;
 }
-/*# sourceMappingURL=fonts.css.map */

@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+// components
+import PopupAuthorization from 'pages/authorizationPage/components/PopupAuthorization';
+
 // assets
 import logo from 'assets/img/logo.png';
 import search from 'assets/img/ic-actions-search.svg';
@@ -110,9 +113,13 @@ export default function Header() {
           <Link className="logo-link" to="/catalog">
             <img className="logo" src={logo} alt="logo" />
           </Link>
-          <Link className="cabinet__list-link adaptive" to="/authorization">
-                <img className="cabinet__list-img" src={cabinet} alt="cabinet"></img>
-              </Link>
+          {localStorage.getItem('user') ? (
+            <Link className="cabinet__list-link adaptive" to="/authorization">
+              <img className="cabinet__list-img" src={cabinet} alt="cabinet"></img>
+            </Link>
+          ) : (
+            <PopupAuthorization classNames={'adaptive'} />
+          )}
           <div className="search">
             <div className="search-categories">All categories</div>
             <div className="search__input">
@@ -126,9 +133,13 @@ export default function Header() {
           </div>
           <ul className="cabinet__list">
             <li className="cabinet__list-item">
-              <Link className="cabinet__list-link" to="/authorization">
-                <img className="cabinet__list-img" src={cabinet} alt="cabinet"></img>
-              </Link>
+              {localStorage.getItem('user') ? (
+                <Link className="cabinet__list-link" to="/authorization">
+                  <img className="cabinet__list-img" src={cabinet} alt="cabinet"></img>
+                </Link>
+              ) : (
+                <PopupAuthorization />
+              )}
             </li>
             <li className="cabinet__list-item">
               <Link className="cabinet__list-link basket" to="/basket">

@@ -1,0 +1,20 @@
+@import url('./reset.css');
+@import url('./default.css');
+
+/* libs */
+@import url('./slick.css');
+
+/* components */
+@import url('./header.css');
+@import url('./footer.css');
+@import url('./inputs.css');
+@import url('./btn.css');
+
+/* pages */
+@import url('./authorizaiton.css');
+@import url('./catalog.css');
+@import url('./card.css');
+@import url('./basket.css');
+
+/* fonts */
+@import url('./fonts.css');
