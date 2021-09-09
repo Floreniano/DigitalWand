@@ -3,6 +3,7 @@
 
 /* libs */
 @import url('./slick.css');
+@import url('../../node_modules/nouislider/distribute/nouislider.css');
 
 /* components */
 @import url('./header.css');

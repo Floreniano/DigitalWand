@@ -3,6 +3,25 @@ import { Link } from 'react-router-dom';
 import SlideToggle from 'react-slide-toggle';
 
 export default function Footer() {
+  const productsTags = [
+    { value: 'Beans', link: '' },
+    { value: 'Carrots', link: '' },
+    { value: 'Apples', link: '' },
+    { value: 'Garlic', link: '' },
+    { value: 'Mushrooms', link: '' },
+    { value: 'Chilli peppers', link: '' },
+    { value: 'Watermelons', link: '' },
+    { value: 'Oranges', link: '' },
+    { value: 'Bananas', link: '' },
+    { value: 'Grapes', link: '' },
+    { value: 'Cherries', link: '' },
+    { value: 'Meat', link: '' },
+    { value: 'Seo tag', link: '' },
+    { value: 'Fish', link: '' },
+    { value: 'Seo tag', link: '' },
+    { value: 'Fresh food', link: '' },
+    { value: 'Lemons', link: '' },
+  ];
   return (
     <footer className="footer">
       <div className="content">
@@ -145,101 +164,13 @@ export default function Footer() {
           <div className="products__tags">
             <h3 className="products__tags-title">Product tags</h3>
             <ul className="products__tags-list">
-              <li className="products__tags-list-item">
-                <Link className="products__tags-list-link" to="">
-                  Beans
-                </Link>
-              </li>
-              <li className="products__tags-list-item">
-                <Link className="products__tags-list-link" to="">
-                  Carrots
-                </Link>
-              </li>
-              <li className="products__tags-list-item">
-                <Link className="products__tags-list-link" to="">
-                  Apples
-                </Link>
-              </li>
-              <li className="products__tags-list-item">
-                <Link className="products__tags-list-link" to="">
-                  Garlic
-                </Link>
-              </li>
-              <li className="products__tags-list-item">
-                <Link className="products__tags-list-link" to="">
-                  Mushrooms
-                </Link>
-              </li>
-              <li className="products__tags-list-item">
-                <Link className="products__tags-list-link" to="">
-                  Tomatoes
-                </Link>
-              </li>
-              <li className="products__tags-list-item">
-                <Link className="products__tags-list-link" to="">
-                  Chilli peppers
-                </Link>
-              </li>
-              <li className="products__tags-list-item">
-                <Link className="products__tags-list-link" to="">
-                  Broccoli
-                </Link>
-              </li>
-              <li className="products__tags-list-item">
-                <Link className="products__tags-list-link" to="">
-                  Watermelons
-                </Link>
-              </li>
-              <li className="products__tags-list-item">
-                <Link className="products__tags-list-link" to="">
-                  Oranges
-                </Link>
-              </li>
-              <li className="products__tags-list-item">
-                <Link className="products__tags-list-link" to="">
-                  Bananas
-                </Link>
-              </li>
-              <li className="products__tags-list-item">
-                <Link className="products__tags-list-link" to="">
-                  Grapes
-                </Link>
-              </li>
-              <li className="products__tags-list-item">
-                <Link className="products__tags-list-link" to="">
-                  Cherries
-                </Link>
-              </li>
-              <li className="products__tags-list-item">
-                <Link className="products__tags-list-link" to="">
-                  Meat
-                </Link>
-              </li>
-              <li className="products__tags-list-item">
-                <Link className="products__tags-list-link" to="">
-                  Seo tag
-                </Link>
-              </li>
-              <li className="products__tags-list-item">
-                <Link className="products__tags-list-link" to="">
-                  Fish
-                </Link>
-              </li>
-              <li className="products__tags-list-item">
-                <Link className="products__tags-list-link" to="">
-                  Seo tag
-                </Link>
-              </li>
-              <li className="products__tags-list-item">
-                <Link className="products__tags-list-link" to="">
-                  Fresh food
-                </Link>
-              </li>
-              <li className="products__tags-list-item">
-                <Link className="products__tags-list-link" to="">
-                  Lemons
-                </Link>
-              </li>
+              {productsTags.map((item, index) => (
+                <li className="products__tags-list-item" key={index}>
+                  <Link className="products__tags-list-link" to={item.link}>
+                    {item.value}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           <div className="footer__author">Copyright © 2020 petrbilek.com</div>

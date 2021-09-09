@@ -8,10 +8,16 @@ import InputMask from 'react-input-mask';
 import closePicture from 'assets/img/close-popup.png';
 import cabinet from 'assets/img/ic-actions-user.svg';
 
+// redux
+import { useDispatch } from 'react-redux';
+import { recalculationPrice } from 'redux/actions/cart';
+
 function PopupAuthorization({ classNames }) {
   const [phone, setPhone] = useState('999999999');
   const [password, setPassword] = useState('qwerty');
   const [errorAuthorization, setErrorAuthorization] = useState('');
+
+  const dispatch = useDispatch();
 
   const handleLogin = async () => {
     try {
@@ -24,7 +30,7 @@ function PopupAuthorization({ classNames }) {
         errorOutput('');
         localStorage.setItem('user', JSON.stringify(response.data.user));
         window.location = '/authorization';
-        this.props.recalculationPrice();
+        dispatch(recalculationPrice());
       }
     } catch (err) {
       /* eslint-disable no-console */
@@ -34,7 +40,9 @@ function PopupAuthorization({ classNames }) {
   const enabled = phone.length > 0 && password.length > 0;
   return (
     <Popup
-      trigger={<img className={`cabinet__list-img ${classNames}`} src={cabinet} alt="cabinet"></img>}
+      trigger={
+        <img className={`cabinet__list-img ${classNames}`} src={cabinet} alt="cabinet"></img>
+      }
       modal
       nested
     >

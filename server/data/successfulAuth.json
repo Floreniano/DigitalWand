@@ -1,0 +1,32 @@
+[
+  {
+    "status": 200,
+    "msg": "",
+    "data": {
+      "auth": true,
+      "user": {
+        "id": 1,
+        "phone": "79999999999",
+        "email": "mail1@mailbox.com",
+        "name": "Bob",
+        "address": "Russia, Very-long street",
+        "sale": 10
+      }
+    }
+  },
+  {
+    "status": 200,
+    "msg": "",
+    "data": {
+      "auth": true,
+      "user": {
+        "id": 2,
+        "phone": "79999999998",
+        "email": "mail2@mailbox.com",
+        "name": "Bob",
+        "address": "Russia, Very-long street",
+        "sale": 10
+      }
+    }
+  }
+]

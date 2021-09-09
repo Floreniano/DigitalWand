@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@400;500;600;700&display=swap');
+@font-face {
+  font-family: 'Poppins';
+  src: url('../scss/fonts/Poppins\ Bold.eot');
+  src: url('../scss/fonts/Poppins\ Bold.eot?#iefix') format('embedded-opentype'),
+    url('../scss/fonts/Poppins\ Bold.woff2') format('woff2'),
+    url('../scss/fonts/Poppins\ Bold.woff') format('woff'),
+    url('../scss/fonts/Poppins\ Bold.ttf') format('truetype'),
+    url('../scss/fonts/Poppins\ Bold.svg#Poppins Bold') format('svg');
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+  unicode-range: U+0020-2212;
+}
+
+@font-face {
+  font-family: 'Poppins SemiBold';
+  src: url('../scss/fonts/Poppins\ SemiBold.eot');
+  src: url('../scss/fonts/Poppins\ SemiBold.eot?#iefix') format('embedded-opentype'),
+    url('../scss/fonts/Poppins\ SemiBold.woff2') format('woff2'),
+    url('../scss/fonts/Poppins\ SemiBold.woff') format('woff'),
+    url('../scss/fonts/Poppins\ SemiBold.ttf') format('truetype'),
+    url('../scss/fonts/Poppins\ SemiBold.svg#Poppins SemiBold') format('svg');
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  unicode-range: U+0020-2212;
+}
+
+@font-face {
+  font-family: 'Poppins Medium';
+  src: url('../scss/fonts/Poppins\ Medium.eot');
+  src: url('../scss/fonts/Poppins\ Medium.eot?#iefix') format('embedded-opentype'),
+    url('../scss/fonts/Poppins\ Medium.woff2') format('woff2'),
+    url('../scss/fonts/Poppins\ Medium.woff') format('woff'),
+    url('../scss/fonts/Poppins\ Medium.ttf') format('truetype'),
+    url('../scss/fonts/Poppins\ Medium.svg#Poppins Medium') format('svg');
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  unicode-range: U+0020-2212;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../scss/fonts/Open\ Sans\ Regular.eot');
+  src: url('../scss/fonts/Open\ Sans\ Regular.eot?#iefix') format('embedded-opentype'),
+    url('../scss/fonts/Open\ Sans\ Regular.woff2') format('woff2'),
+    url('../scss/fonts/Open\ Sans\ Regular.woff') format('woff'),
+    url('../scss/fonts/Open\ Sans\ Regular.ttf') format('truetype'),
+    url('../scss/fonts/Open\ Sans\ Regular.svg#Open Sans Regular') format('svg');
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  unicode-range: U+0020-2212;
+}

@@ -17,13 +17,14 @@ export default function Catalog({
   function createStars() {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
-      i <= rating
-        ? stars.push(
-            <img className="catalog__list-rating-item" key={i} src={star} alt="star"></img>,
-        )
-        : stars.push(
-            <img className="catalog__list-rating-item" key={i} src={starNoActive} alt="star"></img>,
-        );
+      stars.push(
+        <img
+          className="catalog__list-rating-item"
+          key={i}
+          src={i <= rating ? star : starNoActive}
+          alt="star"
+        ></img>,
+      );
     }
     return stars;
   }
@@ -38,13 +39,18 @@ export default function Catalog({
     };
     onClickAddCart(obj);
   };
+
+  const setMainImage = images.find((image) => image.id === mainImage);
   return (
     <div className="catalog__list-item">
       <Link className="catalog__list-link" to={`/card/${id}`}>
         <div className="catalog__list-discount description">-36%</div>
-        {images.map((image) => (image.id === mainImage ? (
-            <img className="catalog__list-img" src={image.url} alt="product" key={image.id}></img>
-        ) : null))}
+        <img
+          className="catalog__list-img"
+          src={setMainImage.url}
+          alt="product"
+          key={setMainImage.id}
+        ></img>
       </Link>
       <h3 className="catalog__list-title">{name}</h3>
       <span className="catalog__list-description">{description}</span>

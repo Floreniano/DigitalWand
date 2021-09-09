@@ -1,9 +1,4 @@
 import { BrowserRouter as Router } from 'react-router-dom';
-
-import 'css/reset.css';
-// libs
-import 'css/slick.css';
-import 'nouislider/distribute/nouislider.css';
 // css
 import 'css/index.css';
 
