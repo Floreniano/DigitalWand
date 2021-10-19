@@ -1,5 +1,8 @@
 @import url('./reset.css');
 @import url('./default.css');
+.test{
+    width: 500px;
+}
 
 /* libs */
 @import url('./slick.css');

@@ -24,6 +24,9 @@ function PopupAuthorization({ classNames }) {
       const errorOutput = (errString) => setErrorAuthorization(errString);
       const number = `7${phone.replace(/\D+/g, '').substr(1)}`;
       const response = await request('/api/users', 'POST', { number, password });
+      if (password.length < 6) {
+        errorOutput('Минимальная длина пароля 6 символов');
+      }
       if (response.msg !== '') {
         errorOutput(response[0].msg);
       } else {
